@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
 
 import { connect } from 'react-redux';
-import { setSearchField, requestQuestions } from './redux/actions';
+import { setSearchField, requestQuestions, returnQuestion } from './redux/actions';
 
 import Question from './components/Question';
 // import data from './data/data.json';
@@ -14,7 +12,8 @@ const mapStateToProps = (state) => {
   return {
     searchField: state.requestQuestions.searchField,
     questions: state.requestQuestions.questions,
-    isPending: state.requestQuestions.isPending
+    isPending: state.requestQuestions.isPending,
+    question: state.returnQuestion.question
   }
 }
 
@@ -23,44 +22,77 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     // onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
-    onRequestQuestions: () => dispatch(requestQuestions())
+    onRequestQuestions: () => dispatch(requestQuestions()),
+    returnQuestion: (question) => dispatch(returnQuestion(question))
   }
 }
 
 class App extends Component {
+  state = {
+    index: -1
+  }
     componentDidMount() {
-      this.props.onRequestQuestions();
+      this.props.onRequestQuestions()
+      this.props.returnQuestion(this.props.questions[this.state.index])
+    }
+
+    nextQuestion = () => {
+      if(this.state.index < this.props.questions.length - 1) {
+        this.setState({
+          index: this.state.index +1
+        });
+      }
+
+      this.props.returnQuestion(this.props.questions[this.state.index])
+    }
+
+    prevQuestion = () => {
+      if(this.state.index > 0) {
+        this.setState({
+          index: this.state.index - 1
+        });
+      }
+
+      this.props.returnQuestion(this.props.questions[this.state.index])
+    }
+
+    startQuiz = () => {
+      this.setState({
+        index: 0
+      });
+      this.props.returnQuestion(this.props.questions[this.state.index])
+      console.log("THIS is ", this.props.question);
     }
   render() {
 
-    const { questions, searchField, onSearchChange, isPending } = this.props;
+    const { questions, searchField, onSearchChange, isPending, question } = this.props;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          <div>
+            <div className="container text-center">
+              <button onClick={this.startQuiz}>START</button>
+            <button onClick={this.prevQuestion}>Previous</button>
+            <button onClick={this.nextQuestion}>Next</button>
+
+            <div className="jumbotron">
+                <Question key={this.state.index} question = {question} index = {this.state.index} />
+            </div>
+
             { isPending &&
-                <div>Loading questions...</div>
+                <div className="spinner-border text-center" role="status">
+                  <span className="sr-only">Loading...</span>
+                </div>
             }
-            { !isPending &&
+            {/* { !isPending &&
               questions.map((el, index) => (
-                <Question question = {el.question} index = {index} answers={el.answers} />
+                <div className="jumbotron">
+                <Question key={index} question = {el.question} index = {index} answers={el.answers} />
+                </div>
               ))
+            } */}
+            {
+              // console.log("new start", questions[this.state.index])
             }
-          </div>
-        </header>
-      </div>
+
+            </div>
     );
   }
 }

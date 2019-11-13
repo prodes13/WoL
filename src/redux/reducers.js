@@ -2,7 +2,8 @@ import {
     CHANGE_SEARCHFIELD,
     REQUEST_QUESTIONS_PENDING,
     REQUEST_QUESTIONS_SUCCESS,
-    REQUEST_QUESTIONS_FAILED
+    REQUEST_QUESTIONS_FAILED,
+    RETURN_QUESTION
    } from './constants';
   
   const initialStateSearch = {
@@ -31,6 +32,19 @@ import {
         return Object.assign({}, state, {questions: action.payload, isPending: false})
       case REQUEST_QUESTIONS_FAILED:
         return Object.assign({}, state, {error: action.payload})
+      default:
+        return state
+    }
+  }
+
+  const initialStateQNum = {
+    question: null
+  }
+
+  export const returnQuestion = (state = initialStateQNum, action = {}) => {
+    switch (action.type) {
+      case RETURN_QUESTION:
+        return Object.assign({}, state, {question: action.payload})
       default:
         return state
     }
