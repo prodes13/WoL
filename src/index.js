@@ -16,12 +16,12 @@ import { requestQuestions, searchRobots, returnQuestion} from './redux/reducers'
 import * as serviceWorker from './serviceWorker';
 
 
-// const logger = createLogger()
+const logger = createLogger()
 
 const rootReducers = combineReducers({requestQuestions, searchRobots, returnQuestion})
 
-// const store = createStore(rootReducers, applyMiddleware(thunkMiddleware, logger))
-const store = createStore(rootReducers, applyMiddleware(thunkMiddleware))
+const store = createStore(rootReducers, applyMiddleware(thunkMiddleware, logger))
+// const store = createStore(rootReducers, applyMiddleware(thunkMiddleware))
 
 ReactDOM.render(
     <Provider store = {store}>
