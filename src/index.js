@@ -10,7 +10,7 @@ import './index.css';
 import App from './App';
 
 
-import { requestQuestions, searchRobots, returnQuestion} from './redux/reducers'
+import { requestQuestions, returnQuestion} from './redux/reducers'
 
 
 import * as serviceWorker from './serviceWorker';
@@ -18,7 +18,7 @@ import * as serviceWorker from './serviceWorker';
 
 const logger = createLogger()
 
-const rootReducers = combineReducers({requestQuestions, searchRobots, returnQuestion})
+const rootReducers = combineReducers({requestQuestions, returnQuestion})
 
 const store = createStore(rootReducers, applyMiddleware(thunkMiddleware, logger))
 // const store = createStore(rootReducers, applyMiddleware(thunkMiddleware))

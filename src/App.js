@@ -27,7 +27,8 @@ const mapDispatchToProps = (dispatch) => {
 
 class App extends Component {
   state = {
-    index: 0
+    index: 0,
+    start: false
   }
     componentDidMount() {
       this.props.onRequestQuestions()
@@ -58,26 +59,30 @@ class App extends Component {
 
     startQuiz = () => {
       this.setState({
-        index: 0
+        index: 0,
+        start: true
       }, () => this.displayQuestion());
     }
 
   render() {
 
     const { isPending, question } = this.props;
-    return (
-            <div className="container text-center">
+    const show = this.state.start ? "d-block" : "d-none";
+    const startScreen = this.state.start ? "d-none" : "d-flex";
 
-            <div className="jumbotron quiz-box">
+    return (
+            <div className="container text-center mt-4">
+
+            <div className={`jumbotron quiz-box align-items-center ${startScreen}`}>
               <button type="button" className="btn btn-primary btn-lg btn-block" onClick={this.startQuiz}>Start your quiz!</button>
             </div>
 
-            <div className="jumbotron quiz-box">
+            <div className={`jumbotron quiz-box ${show}`}>
                 <Question key={this.state.index} question = {question} index = {this.state.index} />
                 <hr/>
                 <div className="btn-toolbar mt-4" role="toolbar" aria-label="Quiz control">
                   <div className="btn-group mx-auto" role="group" aria-label="First group">
-                    <button type="button" className="btn btn-info" onClick={this.prevQuestion}><i class="fa fa-arrow-left mr-3"></i>Prev</button>
+                    <button type="button" className="btn btn-info" onClick={this.prevQuestion}><i className="fa fa-arrow-left mr-3"></i>Prev</button>
                     <button type="button" className="btn btn-info" onClick={this.nextQuestion}>Next<i className="fa fa-arrow-right ml-3"></i></button>
                   </div>
                 </div>

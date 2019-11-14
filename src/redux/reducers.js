@@ -1,23 +1,22 @@
 import {
-    CHANGE_SEARCHFIELD,
     REQUEST_QUESTIONS_PENDING,
     REQUEST_QUESTIONS_SUCCESS,
     REQUEST_QUESTIONS_FAILED,
     RETURN_QUESTION
    } from './constants';
   
-  const initialStateSearch = {
-    searchField: ''
-  }
+  // const initialStateSearch = {
+  //   searchField: ''
+  // }
   
-  export const searchRobots = (state=initialStateSearch, action={}) => {
-    switch (action.type) {
-      case CHANGE_SEARCHFIELD:
-        return Object.assign({}, state, {searchField: action.payload})
-      default:
-        return state
-    }
-  }
+  // export const searchRobots = (state=initialStateSearch, action={}) => {
+  //   switch (action.type) {
+  //     case CHANGE_SEARCHFIELD:
+  //       return Object.assign({}, state, {searchField: action.payload})
+  //     default:
+  //       return state
+  //   }
+  // }
   
   const initialStateQuestions = {
     questions: [],
