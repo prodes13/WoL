@@ -3,7 +3,15 @@ import React from 'react';
 const Answer = (props) => {
     return (
         <>
-        <label className="btn btn-primary btn-lg mr-4"><input className="mr-2" type="radio" name={`question${props.index}`} value={props.numAns+1}/> {props.answer}</label>  
+        <label className="btn btn-primary btn-lg mr-4">
+          <input className="mr-2" 
+            type="radio" 
+            name={`question${props.index}`} 
+            value={props.numAns+1} 
+            onChange={props.radioInputHandling} 
+            /> 
+        {props.answer}
+        </label>  
         </>
 )}
 

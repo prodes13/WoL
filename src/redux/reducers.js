@@ -2,22 +2,14 @@ import {
     REQUEST_QUESTIONS_PENDING,
     REQUEST_QUESTIONS_SUCCESS,
     REQUEST_QUESTIONS_FAILED,
-    RETURN_QUESTION
+    RETURN_QUESTION,
+    QUESTION_INDEX_ADD,
+    QUESTION_INDEX_MIN
    } from './constants';
   
-  // const initialStateSearch = {
-  //   searchField: ''
-  // }
-  
-  // export const searchRobots = (state=initialStateSearch, action={}) => {
-  //   switch (action.type) {
-  //     case CHANGE_SEARCHFIELD:
-  //       return Object.assign({}, state, {searchField: action.payload})
-  //     default:
-  //       return state
-  //   }
-  // }
-  
+  const initialIndex = {
+    globalIndex: 0
+  }
   const initialStateQuestions = {
     questions: [],
     isPending: true
@@ -49,3 +41,13 @@ import {
     }
   }
   
+  export const returnGlobalIndex = (state = initialIndex, action = {}) => {
+    switch (action.type) {
+      case QUESTION_INDEX_ADD:
+        return Object.assign({}, state, { globalIndex: action.payload })
+      case QUESTION_INDEX_MIN:
+        return Object.assign({}, state, { globalIndex: action.payload })
+      default: 
+        return state
+    }
+  }

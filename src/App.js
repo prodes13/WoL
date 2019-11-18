@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { requestQuestions, returnQuestion } from './redux/actions';
+import { requestQuestions, returnQuestion, addGlobalIndex, minGlobalIndex } from './redux/actions';
 
 import Question from './components/Question';
 
@@ -11,7 +11,8 @@ const mapStateToProps = (state) => {
     searchField: state.requestQuestions.searchField,
     questions: state.requestQuestions.questions,
     isPending: state.requestQuestions.isPending,
-    question: state.returnQuestion.question
+    question: state.returnQuestion.question,
+    globalIndex: state.returnGlobalIndex.globalIndex
   }
 }
 
@@ -21,22 +22,37 @@ const mapDispatchToProps = (dispatch) => {
   return {
     // onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
     onRequestQuestions: () => dispatch(requestQuestions()),
-    returnQuestion: (question) => dispatch(returnQuestion(question))
+    returnQuestion: (question) => dispatch(returnQuestion(question)),
+    addGlobalIndex: (globalIndex) => dispatch(addGlobalIndex(globalIndex)),
+    minGlobalIndex: (globalIndex) => dispatch(minGlobalIndex(globalIndex))
   }
 }
 
 class App extends Component {
   state = {
     index: 0,
-    start: false
+    start: false,
+    questionsAnswered: {}
   }
     componentDidMount() {
       this.props.onRequestQuestions()
       this.props.returnQuestion(this.props.questions[this.state.index])
     }
+// handling radio buttons
+handleRadioSelect = (event) =>{
+  console.log(event.target.name, event.target.value );
+  
+  this.setState({ questionsAnswered : {
+    ...this.state.questionsAnswered,
+    [event.target.name]: [event.target.value, "category"]
+  }});
+
+  console.log('[[[[[[]]]]]', this.state);
+}
 
     nextQuestion = () => {
       if(this.state.index < this.props.questions.length - 1) {
+        this.props.addGlobalIndex(this.props.globalIndex);
         this.setState({
           index: this.state.index +1
         }, () => this.displayQuestion());
@@ -50,6 +66,7 @@ class App extends Component {
 
     prevQuestion = () => {
       if(this.state.index > 0) {
+        this.props.minGlobalIndex(this.props.globalIndex);
         this.setState({
           index: this.state.index - 1
         }, () => this.displayQuestion());
@@ -78,11 +95,12 @@ class App extends Component {
             </div>
 
             <div className={`jumbotron quiz-box ${show}`}>
-                <Question key={this.state.index} question = {question} index = {this.state.index} />
+                <Question key={this.state.index} question = {question} index = {this.state.index} radioInputHandling = { this.handleRadioSelect} />
                 <hr/>
                 <div className="btn-toolbar mt-4" role="toolbar" aria-label="Quiz control">
                   <div className="btn-group mx-auto" role="group" aria-label="First group">
                     <button type="button" className="btn btn-info" onClick={this.prevQuestion}><i className="fa fa-arrow-left mr-3"></i>Prev</button>
+    <span className="badge"><h3>{this.state.index + 1}/{this.props.questions.length}</h3></span>
                     <button type="button" className="btn btn-info" onClick={this.nextQuestion}>Next<i className="fa fa-arrow-right ml-3"></i></button>
                   </div>
                 </div>
