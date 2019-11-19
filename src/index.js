@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
@@ -10,7 +10,7 @@ import './index.css';
 import App from './App';
 
 
-import { requestQuestions, returnQuestion, returnGlobalIndex} from './redux/reducers'
+import { requestQuestions, returnQuestion, returnGlobalIndex, saveQuestions} from './redux/reducers'
 
 
 import * as serviceWorker from './serviceWorker';
@@ -18,9 +18,11 @@ import * as serviceWorker from './serviceWorker';
 
 const logger = createLogger()
 
-const rootReducers = combineReducers({requestQuestions, returnQuestion, returnGlobalIndex})
+const rootReducers = combineReducers({requestQuestions, returnQuestion, returnGlobalIndex, saveQuestions})
 
-const store = createStore(rootReducers, applyMiddleware(thunkMiddleware, logger))
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(rootReducers, composeEnhancer(applyMiddleware(thunkMiddleware, logger)))
 // const store = createStore(rootReducers, applyMiddleware(thunkMiddleware))
 
 ReactDOM.render(
@@ -28,13 +30,3 @@ ReactDOM.render(
         <App />
     </Provider>, document.getElementById('root'));
 serviceWorker.unregister();
-
-
-/*
-
-
-import 'tachyons';
-import './index.css';
-
-
-*/

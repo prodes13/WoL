@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { requestQuestions, returnQuestion, addGlobalIndex, minGlobalIndex } from './redux/actions';
+import { requestQuestions, returnQuestion, addGlobalIndex, minGlobalIndex, saveQuestions } from './redux/actions';
 
 import Question from './components/Question';
 
@@ -12,7 +12,8 @@ const mapStateToProps = (state) => {
     questions: state.requestQuestions.questions,
     isPending: state.requestQuestions.isPending,
     question: state.returnQuestion.question,
-    globalIndex: state.returnGlobalIndex.globalIndex
+    globalIndex: state.returnGlobalIndex.globalIndex,
+    questionsAnswered: state.saveQuestions.questionsAnswered
   }
 }
 
@@ -24,31 +25,24 @@ const mapDispatchToProps = (dispatch) => {
     onRequestQuestions: () => dispatch(requestQuestions()),
     returnQuestion: (question) => dispatch(returnQuestion(question)),
     addGlobalIndex: (globalIndex) => dispatch(addGlobalIndex(globalIndex)),
-    minGlobalIndex: (globalIndex) => dispatch(minGlobalIndex(globalIndex))
+    minGlobalIndex: (globalIndex) => dispatch(minGlobalIndex(globalIndex)),
+    saveQuestions: (answeredQuestion) => dispatch(saveQuestions(answeredQuestion))
   }
 }
 
 class App extends Component {
   state = {
-    index: 0,
-    start: false,
-    questionsAnswered: {}
+    start: false
   }
     componentDidMount() {
       this.props.onRequestQuestions()
-      this.props.returnQuestion(this.props.questions[this.state.index])
+      this.props.returnQuestion(this.props.questions[this.props.globalIndex])
     }
-// handling radio buttons
-handleRadioSelect = (event) =>{
-  console.log(event.target.name, event.target.value );
-  
-  this.setState({ questionsAnswered : {
-    ...this.state.questionsAnswered,
-    [event.target.name]: [event.target.value, "category"]
-  }});
 
-  console.log('[[[[[[]]]]]', this.state);
-}
+// handling radio buttons
+  handleRadioSelect = (event) =>{
+    this.props.saveQuestions({...this.props.questionsAnswered, [event.target.name]: [event.target.value]})
+  }
 
     nextQuestion = () => {
       if(this.state.index < this.props.questions.length - 1) {
@@ -61,7 +55,7 @@ handleRadioSelect = (event) =>{
     }
 
     displayQuestion = () => (
-      this.props.returnQuestion(this.props.questions[this.state.index])
+      this.props.returnQuestion(this.props.questions[this.props.globalIndex])
     )
 
     prevQuestion = () => {

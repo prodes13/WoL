@@ -5,7 +5,8 @@ import {
   REQUEST_QUESTIONS_FAILED,
   RETURN_QUESTION,
   QUESTION_INDEX_ADD,
-  QUESTION_INDEX_MIN
+  QUESTION_INDEX_MIN,
+  SAVE_QUESTIONS_ANSWERS
  } from './constants'
 
 export const requestQuestions = () => (dispatch) => {
@@ -14,6 +15,8 @@ export const requestQuestions = () => (dispatch) => {
     .then(data => dispatch({ type: REQUEST_QUESTIONS_SUCCESS, payload: data[0].questions }))
     .catch(error => dispatch({ type: REQUEST_QUESTIONS_FAILED, payload: error }))
 }
+
+export const saveQuestions = (answeredQuestion) => ({ type: SAVE_QUESTIONS_ANSWERS, payload: answeredQuestion});
 
 export const returnQuestion = (question) => ({type: RETURN_QUESTION, payload: question})
 export const addGlobalIndex = (globalIndex) => ({type: QUESTION_INDEX_ADD, payload: globalIndex + 1});

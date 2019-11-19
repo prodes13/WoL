@@ -4,7 +4,8 @@ import {
     REQUEST_QUESTIONS_FAILED,
     RETURN_QUESTION,
     QUESTION_INDEX_ADD,
-    QUESTION_INDEX_MIN
+    QUESTION_INDEX_MIN,
+    SAVE_QUESTIONS_ANSWERS
    } from './constants';
   
   const initialIndex = {
@@ -49,5 +50,18 @@ import {
         return Object.assign({}, state, { globalIndex: action.payload })
       default: 
         return state
+    }
+  }
+
+  const initialStateAnswered = {
+    questionsAnswered: null
+  }
+
+  export const saveQuestions = (state = initialStateAnswered, action = {}) => {
+    switch (action.type) {
+      case SAVE_QUESTIONS_ANSWERS:
+        return Object.assign({}, state, {questionsAnswered: action.payload});
+      default:
+        return state;
     }
   }
