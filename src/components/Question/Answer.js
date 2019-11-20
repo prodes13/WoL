@@ -9,6 +9,7 @@ const Answer = (props) => {
             name={`question${props.index}`} 
             value={props.numAns+1} 
             onChange={props.radioInputHandling} 
+            checked = {props.isChecked}
             /> 
         {props.answer}
         </label>  

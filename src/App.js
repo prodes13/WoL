@@ -3,7 +3,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { requestQuestions, returnQuestion, addGlobalIndex, minGlobalIndex, saveQuestions } from './redux/actions';
 
-import Question from './components/Question';
+import Question from './components/Question/Question';
 
 // parameter state comes from index.js provider store state(rootReducers)
 const mapStateToProps = (state) => {
