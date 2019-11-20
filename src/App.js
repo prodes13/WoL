@@ -89,7 +89,12 @@ class App extends Component {
             </div>
 
             <div className={`jumbotron quiz-box ${show}`}>
-                <Question key={this.state.index} question = {question} index = {this.state.index} radioInputHandling = { this.handleRadioSelect} />
+                <Question key={this.state.index} 
+                          question = {question} 
+                          index = {this.props.globalIndex} 
+                          radioInputHandling = { this.handleRadioSelect}
+                          savedQuestions = {this.props.questionsAnswered} 
+                          />
                 <hr/>
                 <div className="btn-toolbar mt-4" role="toolbar" aria-label="Quiz control">
                   <div className="btn-group mx-auto" role="group" aria-label="First group">

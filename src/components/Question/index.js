@@ -1,6 +1,8 @@
 import React from 'react';
 import Answer from './Answer';
 const Question =(props) => {
+    console.log("Received state in component: ", props.savedQuestions);
+    
     return (
 
     <>
