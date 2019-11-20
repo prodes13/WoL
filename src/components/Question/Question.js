@@ -25,6 +25,7 @@ const Question =(props) => {
                                                 numAns={numAns} 
                                                 index={props.index}
                                                 isChecked={getAnswered(numAns)}
+                                                category={props.question.topic}
                                                 />)
         }
         {

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { requestQuestions, returnQuestion, addGlobalIndex, minGlobalIndex, saveQuestions } from './redux/actions';
 
 import Question from './components/Question/Question';
+import ShowResults from './components/ShowResults';
 
 // parameter state comes from index.js provider store state(rootReducers)
 const mapStateToProps = (state) => {
@@ -41,7 +42,10 @@ class App extends Component {
 
 // handling radio buttons
   handleRadioSelect = (event) =>{
-    this.props.saveQuestions({...this.props.questionsAnswered, [event.target.name]: [event.target.value]})
+    // getting the custom data attribute - topic of the question
+    const category = event.target.attributes.getNamedItem("data-category").value;
+    // saving answered questions in REDUX
+    this.props.saveQuestions({...this.props.questionsAnswered, [event.target.name]: [event.target.value, category]})
   }
 
     nextQuestion = () => {
@@ -110,6 +114,8 @@ class App extends Component {
                   <span className="sr-only">Loading...</span>
                 </div>
             }
+
+              <ShowResults results={this.props.questionsAnswered} />
             </div>
     );
   }

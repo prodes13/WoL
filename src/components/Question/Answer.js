@@ -10,6 +10,7 @@ const Answer = (props) => {
             value={props.numAns+1} 
             onChange={props.radioInputHandling} 
             checked = {props.isChecked}
+            data-category = {props.category}
             /> 
         {props.answer}
         </label>  
