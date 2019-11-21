@@ -13,12 +13,11 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\" \"json-server --watch db.json --port 3002\"",
     "startWithDB": "concurrently 'json-server --watch db.json --port 3300' 'npm start'",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "backupscr": "concurrently \"react-scripts start\" \"json-server --watch db.json --port 3002\""
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
