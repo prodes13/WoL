@@ -1,12 +1,13 @@
 import React from 'react';
+import ShowChart from './ShowChart';
 
 const ShowResults =(props) => {
+    const finalSum = {};
     console.log("show results", props.results);
     if(props.results){
         const answeredArr = Object.values(props.results);
         const topics = []; 
         let reducedTopics = [];
-        const finalSum = {};
 
         console.log(answeredArr);
         answeredArr.map(el => {
@@ -24,13 +25,25 @@ const ShowResults =(props) => {
                 }
             }
         }
-        console.log(finalSum);
+        console.log("FINAL SUM: ", finalSum);
         
     }
     return  <>
             <h1>Showing Results</h1>
-
+            {/* <h2>
+                { finalSum && Object.keys(finalSum)}
+            </h2> */}
+            <ShowChart data={finalSum}/>
             </>
 }
 
 export default ShowResults;
+
+/*
+
+{
+  "SĂNĂTATE ȘI ENERGIE": 17,
+  "EMOȚII ȘI OBIECTIVE": 6
+}
+
+*/

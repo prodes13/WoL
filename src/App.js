@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { requestQuestions, returnQuestion, addGlobalIndex, minGlobalIndex, saveQuestions } from './redux/actions';
 
 import Question from './components/Question/Question';
-import ShowResults from './components/ShowResults';
+import ShowResults from './components/Results/ShowResults';
 
 // parameter state comes from index.js provider store state(rootReducers)
 const mapStateToProps = (state) => {
@@ -33,7 +33,8 @@ const mapDispatchToProps = (dispatch) => {
 
 class App extends Component {
   state = {
-    start: false
+    start: false,
+    isSubmit: false
   }
     componentDidMount() {
       this.props.onRequestQuestions()
@@ -79,6 +80,12 @@ class App extends Component {
       }, () => this.displayQuestion());
     }
 
+    submitAnswers = () => {
+      this.setState({
+        isSubmit: true
+      });
+    }
+
   render() {
 
     const { isPending, question } = this.props;
@@ -114,8 +121,12 @@ class App extends Component {
                   <span className="sr-only">Loading...</span>
                 </div>
             }
-
-              <ShowResults results={this.props.questionsAnswered} />
+              {/* submitting answers */}
+              
+              <button onClick={this.submitAnswers}>Submit</button>
+              {
+                this.state.isSubmit && <ShowResults results={this.props.questionsAnswered} />
+              }
             </div>
     );
   }
