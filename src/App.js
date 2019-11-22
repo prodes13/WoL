@@ -109,9 +109,25 @@ class App extends Component {
                 <hr/>
                 <div className="btn-toolbar mt-4" role="toolbar" aria-label="Quiz control">
                   <div className="btn-group mx-auto" role="group" aria-label="First group">
-                    <button type="button" className="btn btn-info" onClick={this.prevQuestion}><i className="fa fa-arrow-left mr-3"></i>Prev</button>
-    <span className="badge"><h3>{this.state.index + 1}/{this.props.questions.length}</h3></span>
-                    <button type="button" className="btn btn-info" onClick={this.nextQuestion}>Next<i className="fa fa-arrow-right ml-3"></i></button>
+                    { 
+                      this.props.globalIndex > 0 &&
+                      <button type="button" 
+                              className="btn btn-info" 
+                              onClick={this.prevQuestion}>
+                              <i className="fa fa-arrow-left mr-3"></i>
+                              Prev
+                      </button>
+                    }
+    <span className="badge"><h3>{this.props.globalIndex + 1}/{this.props.questions.length}</h3></span>
+                    {
+                      this.props.globalIndex < this.props.questions.length - 1 && 
+                        <button type="button" 
+                              className="btn btn-info" 
+                              onClick={this.nextQuestion}>
+                              Next
+                              <i className="fa fa-arrow-right ml-3"></i>
+                        </button>
+                      }
                   </div>
                 </div>
             </div>

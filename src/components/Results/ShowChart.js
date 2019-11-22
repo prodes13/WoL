@@ -3,10 +3,6 @@ import Chart from 'chart.js';
 
 class ShowChart extends React.Component {
 
-    state = {
-        date: [4,6,3,4,5,6,7,5,6]
-    }
-
     componentDidMount() {
         this.updateCanvas();
     }
