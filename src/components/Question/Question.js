@@ -1,9 +1,8 @@
 import React from 'react';
 import Answer from './Answer';
 const Question =(props) => {
-    console.log("Received state in component: ", props.savedQuestions);
+    // console.log("Received state in component: ", props.savedQuestions);
 
-    // console.log(props.savedQuestions['question' + props.index]);
 // retrieving question number and answer, arg is affected by starting index at 0 
     const getAnswered = (arg) => {
         if (props.savedQuestions) {
@@ -28,10 +27,10 @@ const Question =(props) => {
                                                 category={props.question.topic}
                                                 />)
         }
-        {
+        {/* {
             props.savedQuestions &&
             <p>Answer was: {props.savedQuestions['question' + props.index]}</p>
-        }
+        } */}
     </>
 )}
 

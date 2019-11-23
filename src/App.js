@@ -22,7 +22,6 @@ const mapStateToProps = (state) => {
 // the function returns an object then uses connect to change the data from redecers.
 const mapDispatchToProps = (dispatch) => {
   return {
-    // onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
     onRequestQuestions: () => dispatch(requestQuestions()),
     returnQuestion: (question) => dispatch(returnQuestion(question)),
     addGlobalIndex: (globalIndex) => dispatch(addGlobalIndex(globalIndex)),
@@ -100,6 +99,13 @@ class App extends Component {
             </div>
 
             <div className={`jumbotron quiz-box ${show}`}>
+                {/* Loading questions */}
+                { isPending &&
+                    <div className="spinner-border text-center" role="status">
+                      {/* <span className="sr-only">Loading...</span> */}
+                      <span>Loading...</span>
+                    </div>
+                }
                 <Question key={this.state.index} 
                           question = {question} 
                           index = {this.props.globalIndex} 
@@ -118,7 +124,7 @@ class App extends Component {
                               Prev
                       </button>
                     }
-    <span className="badge"><h3>{this.props.globalIndex + 1}/{this.props.questions.length}</h3></span>
+                    <span className="badge"><h3>{this.props.globalIndex + 1}/{this.props.questions.length}</h3></span>
                     {
                       this.props.globalIndex < this.props.questions.length - 1 && 
                         <button type="button" 
@@ -131,15 +137,12 @@ class App extends Component {
                   </div>
                 </div>
             </div>
-
-            { isPending &&
-                <div className="spinner-border text-center" role="status">
-                  <span className="sr-only">Loading...</span>
-                </div>
-            }
               {/* submitting answers */}
-              
-              <button onClick={this.submitAnswers}>Submit</button>
+              <button type="button" 
+                      onClick={this.submitAnswers}
+                      className="btn btn-outline-primary">
+                      Submit your results
+              </button>
               {
                 this.state.isSubmit && <ShowResults results={this.props.questionsAnswered} />
               }

@@ -2,14 +2,14 @@ import React from 'react';
 import ShowChart from './ShowChart';
 
 const ShowResults =(props) => {
-    const finalSum = {};
-    console.log("show results", props.results);
+    const finalQuizResults = {};
+    // console.log("show results", props.results);
     if(props.results){
         const answeredArr = Object.values(props.results);
         const topics = []; 
         let reducedTopics = [];
 
-        console.log(answeredArr);
+        // console.log(answeredArr);
         answeredArr.map(el => {
             console.log(el);
             return topics.push(el[1]);
@@ -21,19 +21,19 @@ const ShowResults =(props) => {
         for(let i = 0; i < reducedTopics.length; i++) {
             for(let j =0; j < answeredArr.length; j++) {
                 if (reducedTopics[i] === answeredArr[j][1]) {
-                    finalSum[reducedTopics[i]] = parseInt(finalSum[reducedTopics[i]] || 0) + parseInt(answeredArr[j][0]);
+                    finalQuizResults[reducedTopics[i]] = parseInt(finalQuizResults[reducedTopics[i]] || 0) + parseInt(answeredArr[j][0]);
                 }
             }
         }
-        console.log("FINAL SUM: ", finalSum);
+        console.log("FINAL SUM: ", finalQuizResults);
         
     }
     return  <>
             <h1>Showing Results</h1>
             {/* <h2>
-                { finalSum && Object.keys(finalSum)}
+                { finalQuizResults && Object.keys(finalQuizResults)}
             </h2> */}
-            <ShowChart data={finalSum}/>
+            <ShowChart data={finalQuizResults}/>
             </>
 }
 
