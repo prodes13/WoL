@@ -1,8 +1,6 @@
 import React from 'react';
 import Chart from 'chart.js';
 
-// media aritmetica -> max 10
-
 class ShowChart extends React.Component {
 
     componentDidMount() {
@@ -38,8 +36,8 @@ class ShowChart extends React.Component {
                         display: false
                     },
                     ticks: {
-                        suggestedMin: 0,
-                        suggestedMax: 5
+                        suggestedMin: 10,
+                        suggestedMax: 10
                     }
                 },
                 responsive: true,

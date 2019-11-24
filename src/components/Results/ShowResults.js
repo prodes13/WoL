@@ -14,10 +14,13 @@ const ShowResults =(props) => {
             // console.log(el);
             return topicsList.push(el[1]);
         });
+
+        const numberOfTopics = Object.values(topicsList.reduce((acum,cur) => Object.assign(acum,{[cur]: (acum[cur] | 0)+1}),{}));
+
         reducedTopicsList = topicsList.filter((el, index) => {
             return topicsList.indexOf(el) === index
         });
-        console.log('TOTAL', reducedTopicsList);
+
         for(let i = 0; i < reducedTopicsList.length; i++) {
             for(let j =0; j < allTopicsWithAnswers.length; j++) {
                 if (reducedTopicsList[i] === allTopicsWithAnswers[j][1]) {
@@ -25,6 +28,12 @@ const ShowResults =(props) => {
                 }
             }
         }
+
+        // average for every topic/category
+        Object.keys(finalQuizResults).map((key, index) => (
+            finalQuizResults[key] = Math.round(finalQuizResults[key] / numberOfTopics[index])
+        ));
+       
         // console.log("FINAL SUM: ", finalQuizResults);
     }
     return  <>
@@ -34,12 +43,3 @@ const ShowResults =(props) => {
 }
 
 export default ShowResults;
-
-/*
-
-{
-  "SĂNĂTATE ȘI ENERGIE": 17,
-  "EMOȚII ȘI OBIECTIVE": 6
-}
-
-*/
