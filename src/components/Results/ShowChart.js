@@ -1,13 +1,15 @@
 import React from 'react';
 import Chart from 'chart.js';
 
+// media aritmetica -> max 10
+
 class ShowChart extends React.Component {
 
     componentDidMount() {
         this.updateCanvas();
     }
     updateCanvas() {
-        console.log("CHART PROPS", this.props.data);
+        // console.log("CHART PROPS", this.props.data);
         const ctx = this.refs.canvas.getContext('2d');
         ctx.fillRect(0,0, 100, 100);
         return new Chart(ctx, {

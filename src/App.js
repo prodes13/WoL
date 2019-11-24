@@ -95,54 +95,59 @@ class App extends Component {
             <div className="container text-center mt-4">
 
             <div className={`jumbotron quiz-box align-items-center ${startScreen}`}>
-              <button type="button" className="btn btn-primary btn-lg btn-block" onClick={this.startQuiz}>Start your quiz!</button>
-            </div>
-
-            <div className={`jumbotron quiz-box ${show}`}>
-                {/* Loading questions */}
-                { isPending &&
-                    <div className="spinner-border text-center" role="status">
-                      {/* <span className="sr-only">Loading...</span> */}
-                      <span>Loading...</span>
-                    </div>
-                }
-                <Question key={this.state.index} 
-                          question = {question} 
-                          index = {this.props.globalIndex} 
-                          radioInputHandling = { this.handleRadioSelect}
-                          savedQuestions = {this.props.questionsAnswered} 
-                          />
-                <hr/>
-                <div className="btn-toolbar mt-4" role="toolbar" aria-label="Quiz control">
-                  <div className="btn-group mx-auto" role="group" aria-label="First group">
-                    { 
-                      this.props.globalIndex > 0 &&
-                      <button type="button" 
-                              className="btn btn-info" 
-                              onClick={this.prevQuestion}>
-                              <i className="fa fa-arrow-left mr-3"></i>
-                              Prev
-                      </button>
-                    }
-                    <span className="badge"><h3>{this.props.globalIndex + 1}/{this.props.questions.length}</h3></span>
-                    {
-                      this.props.globalIndex < this.props.questions.length - 1 && 
-                        <button type="button" 
-                              className="btn btn-info" 
-                              onClick={this.nextQuestion}>
-                              Next
-                              <i className="fa fa-arrow-right ml-3"></i>
-                        </button>
-                      }
-                  </div>
-                </div>
-            </div>
-              {/* submitting answers */}
               <button type="button" 
-                      onClick={this.submitAnswers}
-                      className="btn btn-outline-primary">
-                      Submit your results
+                      className="btn btn-primary btn-lg btn-block" 
+                      onClick={this.startQuiz}>
+                      Începe testul!
               </button>
+            </div>
+            { 
+              !this.state.isSubmit &&
+                <div className={`jumbotron quiz-box ${show}`}>
+                    {/* Loading questions */}
+                    { isPending &&
+                        <div className="spinner-border text-center" role="status">
+                          {/* <span className="sr-only">Loading...</span> */}
+                          <span>Loading...</span>
+                        </div>
+                    }
+                    <Question key={this.props.globalIndex} 
+                              question = {question} 
+                              index = {this.props.globalIndex} 
+                              radioInputHandling = { this.handleRadioSelect}
+                              savedQuestions = {this.props.questionsAnswered} 
+                              />
+                    <hr/>
+                    <div className="btn-toolbar mt-4" role="toolbar" aria-label="Quiz control">
+                      <div className="btn-group mx-auto" role="group" aria-label="First group">
+                        { 
+                          this.props.globalIndex > 0 &&
+                          <button type="button" 
+                                  className="btn btn-info" 
+                                  onClick={this.prevQuestion}>
+                                  <i className="fa fa-arrow-left mr-3"></i>
+                          </button>
+                        }
+                        <span className="badge"><h3>{this.props.globalIndex + 1}/{this.props.questions.length}</h3></span>
+                        {
+                          this.props.globalIndex < this.props.questions.length - 1 && 
+                            <button type="button" 
+                                  className="btn btn-info" 
+                                  onClick={this.nextQuestion}>
+                                  <i className="fa fa-arrow-right ml-3"></i>
+                            </button>
+                          }
+                      </div>
+                    </div>
+                  {/* submitting answers */}
+                  <button type="button" 
+                          onClick={this.submitAnswers}
+                          className="btn btn-outline-primary mt-5">
+                          Trimite raspunsurile tale
+                  </button>
+                </div>
+                }
+
               {
                 this.state.isSubmit && <ShowResults results={this.props.questionsAnswered} />
               }

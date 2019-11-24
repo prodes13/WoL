@@ -3,10 +3,10 @@ import Answer from './Answer';
 const Question =(props) => {
     // console.log("Received state in component: ", props.savedQuestions);
 
-// retrieving question number and answer, arg is affected by starting index at 0 
-    const getAnswered = (arg) => {
+// retrieving question number and answer, numAns is affected by starting index at 0 
+    const getAnswered = (numAns) => {
         if (props.savedQuestions) {
-            if (parseInt(props.savedQuestions['question' + props.index])=== (arg+1)) return true;
+            if (parseInt(props.savedQuestions['question' + props.index])=== (numAns+1)) return true;
         }
         return false;
     }
@@ -14,7 +14,10 @@ const Question =(props) => {
     return (
     <>
         { props.question &&
-            <h2 className="display-5 mb-4">{props.question.question}</h2>
+            <div className="">
+                <h6>[{props.question.topic}]</h6>
+                <h2 className="display-5 mb-4">{props.question.question}</h2>
+            </div>
         }
         { props.question &&
             Object.values(props.question.answers)
