@@ -158,8 +158,11 @@ class App extends Component {
                 }
 
           </div>
-              {
+              {/* {
                 this.state.isSubmit && <ShowResults results={this.props.questionsAnswered} />
+              } */}
+              {
+                this.state.isSubmit && <ShowResults />
               }
           </>
     );

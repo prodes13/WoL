@@ -1,29 +1,32 @@
 import React from 'react';
 import {Navbar, Nav, Container} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const AppNavbar = () => {
     return (
       <Container>
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
-          <Navbar.Brand href="/">
-            <img
-              alt=""
-              src="/logo192.png"
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
-            />{' '}
-            Dezvoltare personală
-          </Navbar.Brand>
+          <Link to="/">
+            <Navbar.Brand>
+              <img
+                alt=""
+                src="/logo192.png"
+                width="30"
+                height="30"
+                className="d-inline-block align-top"
+              />{' '}
+              Dezvoltare personală
+            </Navbar.Brand>
+          </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/quiz">Test</Nav.Link>
-              <Nav.Link href="/results">Evaluarea ta</Nav.Link>
+                <Link to='/quiz'>Test</Link>
+                <Link to='/results'>Evaluarea ta</Link>
             </Nav>
             <Nav>
               <Navbar.Text>
-                    Logat ca: <a href="/profile">Florin</a>
+                    Logat ca: <Link to="/profile">Florin</Link>
               </Navbar.Text>
             </Nav>
           </Navbar.Collapse>

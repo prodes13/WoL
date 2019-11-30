@@ -1,6 +1,14 @@
 import React from 'react';
 import ShowChart from './ShowChart';
 import Jumbotron from 'react-bootstrap/Jumbotron';
+import { connect } from 'react-redux';
+
+
+const mapStateToProps = (state) => {
+    return {
+      results: state.saveQuestions.questionsAnswered
+    }
+  }
 
 const ShowResults =(props) => {
     const finalQuizResults = {};
@@ -38,11 +46,12 @@ const ShowResults =(props) => {
         // console.log("FINAL SUM: ", finalQuizResults);
     }
     return  <div className="container text-center mt-4">
-                <Jumbotron>
+                
                     <h3>Rezultatele tale:</h3>
                     <ShowChart data={finalQuizResults}/>    
-                </Jumbotron>
+                
             </div>
 }
 
-export default ShowResults;
+// action done from mapDispatchToProps will channge state from mapStateToProps
+export default connect(mapStateToProps)(ShowResults)
