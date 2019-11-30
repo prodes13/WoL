@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import './Quiz.css';
 import { connect } from 'react-redux';
 import { requestQuestions, returnQuestion, addGlobalIndex, minGlobalIndex, saveQuestions } from './redux/actions';
-
 import Question from './components/Question/Question';
 import ShowResults from './components/Results/ShowResults';
-
 import {Jumbotron, Button} from 'react-bootstrap';
-
 // parameter state comes from index.js provider store state(rootReducers)
 const mapStateToProps = (state) => {
   return {
@@ -19,7 +16,6 @@ const mapStateToProps = (state) => {
     questionsAnswered: state.saveQuestions.questionsAnswered
   }
 }
-
 // dispatch the DOM changes to call an action. note mapStateToProps returns object, mapDispatchToProps returns function
 // the function returns an object then uses connect to change the data from redecers.
 const mapDispatchToProps = (dispatch) => {
@@ -51,11 +47,9 @@ class App extends Component {
   }
 
     nextQuestion = () => {
-      if(this.state.index < this.props.questions.length - 1) {
+      if(this.props.globalIndex < this.props.questions.length - 1) {
         this.props.addGlobalIndex(this.props.globalIndex);
-        this.setState({
-          index: this.state.index +1
-        }, () => this.displayQuestion());
+        this.displayQuestion();
       }
 
     }
@@ -65,18 +59,15 @@ class App extends Component {
     )
 
     prevQuestion = () => {
-      if(this.state.index > 0) {
+      if(this.props.globalIndex > 0) {
         this.props.minGlobalIndex(this.props.globalIndex);
-        this.setState({
-          index: this.state.index - 1
-        }, () => this.displayQuestion());
+        this.displayQuestion();
       }
-
     }
 
     startQuiz = () => {
       this.setState({
-        index: 0,
+        // index: 0,
         start: true
       }, () => this.displayQuestion());
     }

@@ -1,6 +1,5 @@
 import React from 'react';
 import ShowChart from './ShowChart';
-import Jumbotron from 'react-bootstrap/Jumbotron';
 import { connect } from 'react-redux';
 
 
@@ -10,7 +9,7 @@ const mapStateToProps = (state) => {
     }
   }
 
-const ShowResults =(props) => {
+const ShowResults = (props) => {
     const finalQuizResults = {};
     // console.log("show results", props.results);
     if(props.results){
@@ -46,10 +45,8 @@ const ShowResults =(props) => {
         // console.log("FINAL SUM: ", finalQuizResults);
     }
     return  <div className="container text-center mt-4">
-                
-                    <h3>Rezultatele tale:</h3>
-                    <ShowChart data={finalQuizResults}/>    
-                
+                <h3>Rezultatele tale:</h3>
+                <ShowChart data={finalQuizResults}/>    
             </div>
 }
 
