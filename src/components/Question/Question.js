@@ -14,10 +14,7 @@ const Question =(props) => {
     return (
     <>
         { props.question &&
-            <div className="">
-                {/* <h6>[{props.question.topic}]</h6> */}
-                <h2 className="display-5 mb-4">{props.question.question}</h2>
-            </div>
+            <h2 className="display-5 mb-4">{props.question.question}</h2>
         }
         { props.question &&
         <div  className="answer-buttons">
