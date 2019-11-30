@@ -1,5 +1,6 @@
 import React from 'react';
 import ShowChart from './ShowChart';
+import Jumbotron from 'react-bootstrap/Jumbotron';
 
 const ShowResults =(props) => {
     const finalQuizResults = {};
@@ -36,10 +37,12 @@ const ShowResults =(props) => {
        
         // console.log("FINAL SUM: ", finalQuizResults);
     }
-    return  <>
-            <h1>Showing Results</h1>
-            <ShowChart data={finalQuizResults}/>
-            </>
+    return  <div className="container text-center mt-4">
+                <Jumbotron>
+                    <h3>Rezultatele tale:</h3>
+                    <ShowChart data={finalQuizResults}/>    
+                </Jumbotron>
+            </div>
 }
 
 export default ShowResults;

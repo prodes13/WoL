@@ -94,6 +94,7 @@ class App extends Component {
     const startScreen = this.state.start ? "d-none" : "d-flex";
 
     return (
+      <>
             <div className="container text-center mt-4">
 
             
@@ -156,10 +157,11 @@ class App extends Component {
                 </div>
                 }
 
+          </div>
               {
                 this.state.isSubmit && <ShowResults results={this.props.questionsAnswered} />
               }
-            </div>
+          </>
     );
   }
 }
