@@ -20,7 +20,8 @@ const Question =(props) => {
             </div>
         }
         { props.question &&
-            Object.values(props.question.answers)
+        <div  className="answer-buttons">
+            {Object.values(props.question.answers)
                     .map((el, numAns) => <Answer key = {props.index +''+ numAns} 
                                                 answer={el} 
                                                 radioInputHandling = {props.radioInputHandling} 
@@ -28,7 +29,8 @@ const Question =(props) => {
                                                 index={props.index}
                                                 isChecked={getAnswered(numAns)}
                                                 category={props.question.topic}
-                                                />)
+                                                />)}
+        </div>
         }
         {/* {
             props.savedQuestions &&

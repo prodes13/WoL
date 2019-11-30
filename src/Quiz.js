@@ -123,31 +123,34 @@ class App extends Component {
                               savedQuestions = {this.props.questionsAnswered} 
                               />
                     <hr/>
-                    <div className="btn-toolbar mt-4" role="toolbar" aria-label="Quiz control">
-                      <div className="btn-group mx-auto" role="group" aria-label="First group">
-                        { 
-                          this.props.globalIndex > 0 &&
-                          <button type="button" 
-                                  className="btn btn-info" 
-                                  onClick={this.prevQuestion}>
-                                  <i className="fa fa-arrow-left mr-3"></i>
-                          </button>
-                        }
-                        <span className="badge"><h3>{this.props.globalIndex + 1}/{this.props.questions.length}</h3></span>
-                        {
-                          this.props.globalIndex < this.props.questions.length - 1 && 
+
+                    <div className="buttons">
+                      <div className="btn-toolbar mt-4" role="toolbar" aria-label="Quiz control">
+                        <div className="btn-group mx-auto" role="group" aria-label="First group">
+                          { 
+                            this.props.globalIndex > 0 &&
                             <button type="button" 
-                                  className="btn btn-info" 
-                                  onClick={this.nextQuestion}>
-                                  <i className="fa fa-arrow-right ml-3"></i>
+                                    className="btn btn-info" 
+                                    onClick={this.prevQuestion}>
+                                    <i className="fa fa-arrow-left mr-3"></i>
                             </button>
                           }
+                          <span className="badge"><h3>{this.props.globalIndex + 1}/{this.props.questions.length}</h3></span>
+                          {
+                            this.props.globalIndex < this.props.questions.length - 1 && 
+                              <button type="button" 
+                                    className="btn btn-info" 
+                                    onClick={this.nextQuestion}>
+                                    <i className="fa fa-arrow-right ml-3"></i>
+                              </button>
+                            }
+                        </div>
                       </div>
                     </div>
                   {/* submitting answers */}
                   <button type="button" 
                           onClick={this.submitAnswers}
-                          className="btn btn-outline-primary mt-5">
+                          className="btn btn-outline-primary mt-5 send-button">
                           Trimite raspunsurile tale
                   </button>
                 </div>
