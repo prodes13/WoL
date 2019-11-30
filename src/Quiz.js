@@ -6,6 +6,8 @@ import { requestQuestions, returnQuestion, addGlobalIndex, minGlobalIndex, saveQ
 import Question from './components/Question/Question';
 import ShowResults from './components/Results/ShowResults';
 
+import {Jumbotron, Button} from 'react-bootstrap';
+
 // parameter state comes from index.js provider store state(rootReducers)
 const mapStateToProps = (state) => {
   return {
@@ -94,13 +96,16 @@ class App extends Component {
     return (
             <div className="container text-center mt-4">
 
-            <div className={`jumbotron quiz-box align-items-center ${startScreen}`}>
-              <button type="button" 
-                      className="btn btn-primary btn-lg btn-block" 
-                      onClick={this.startQuiz}>
-                      Începe testul!
-              </button>
-            </div>
+            
+              <Jumbotron className={`quiz-box align-items-center ${startScreen}`}>
+                <Button variant="primary"
+                        size="lg"
+                        block
+                        onClick={this.startQuiz}
+                >
+                        Începe testul!
+                </Button>
+              </Jumbotron>
             { 
               !this.state.isSubmit &&
                 <div className={`jumbotron quiz-box ${show}`}>

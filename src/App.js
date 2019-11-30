@@ -5,30 +5,33 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
+import {Navbar, Nav, Container} from 'react-bootstrap'
+
 import Quiz from './Quiz';
+import ShowResults from "./components/Results/ShowResults";
+
 
 export default function App() {
   return (
     <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/quiz">Quiz</Link>
-          </li>
-          <li>
-            <Link to="/results">Results</Link>
-          </li>
-        </ul>
-
+      <Container>
+        <Navbar expand="lg" variant="light" bg="light">
+          <Navbar.Brand href="/">WheelOfLife</Navbar.Brand>
+            <Nav className="mr-auto">
+            <Nav.Link href="/quiz">Quiz</Nav.Link>
+            <Nav.Link href="/results">Results</Nav.Link>
+          </Nav>
+        </Navbar>
+      </Container>
         <Switch>
           <Route path="/quiz">
             <Quiz />
           </Route>
           <Route path="/results">
-            <h1>Results</h1>
+            <ShowResults />
           </Route>
         </Switch>
-      </div>
     </Router>
   );
 }
