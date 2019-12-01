@@ -44,7 +44,7 @@ const ShowResults = (props) => {
        
         // console.log("FINAL SUM: ", finalQuizResults);
     }
-    return  <div className="container text-center mt-4">
+    return  <div className="container text-center">
                 <h3>Rezultatele tale:</h3>
                 <ShowChart data={finalQuizResults}/>    
             </div>

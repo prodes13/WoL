@@ -87,7 +87,7 @@ class App extends Component {
 
     return (
       <>
-            <div className="container text-center mt-4">
+            <div className="container text-center">
 
             
               <Jumbotron className={`quiz-box align-items-center ${startScreen}`}>
