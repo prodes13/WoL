@@ -1,5 +1,7 @@
 .quiz-box {
-    min-height: 520px;
+    min-height: 350px;
+    position: relative;
+
 }
 
 .buttons, .send-button, .answer-buttons {
@@ -7,16 +9,18 @@
 }
 
 .buttons {
-    right: 42%;
+    /* right: 42%; */
     bottom: 10%;
+
+    margin: 0 auto;
 }
 
 .send-button {
-    right: 10%;
     bottom: 10%;
 }
 
 .answer-buttons {
+    width: 100%;
     bottom: 20%;
-    right: 13%;
+    margin: 0 auto;
 }

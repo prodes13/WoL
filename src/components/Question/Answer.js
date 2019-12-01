@@ -3,7 +3,7 @@ import React from 'react';
 const Answer = (props) => {
     return (
         <>
-        <label className="btn btn-primary btn-lg mr-4">
+        <label className="btn btn-primary btn-xs mr-2">
           <input className="mr-2 text-center" 
             type="radio" 
             name={`question${props.index}`} 

@@ -100,7 +100,7 @@ class App extends Component {
               </Jumbotron>
             { 
               !this.state.isSubmit &&
-                <div className={`jumbotron quiz-box ${show}`}>
+                <Jumbotron className={`quiz-box ${show}`}>
                     {/* Loading questions */}
                     { isPending &&
                         <div className="spinner-border text-center" role="status">
@@ -145,7 +145,7 @@ class App extends Component {
                           className="btn btn-outline-primary mt-5 send-button">
                           Trimite raspunsurile tale
                   </button>
-                </div>
+                </Jumbotron>
                 }
 
           </div>

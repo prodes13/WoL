@@ -12,7 +12,7 @@ const Question =(props) => {
 
     if(props.question) return (
         <>
-            <h2 className="display-5 mb-4">{props.question.question}</h2>
+            <p className="mb-4">{props.question.question}</p>
             <div  className="answer-buttons">
                 {Object.values(props.question.answers)
                         .map((el, numAns) => <Answer key = {props.index +''+ numAns} 
