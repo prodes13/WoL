@@ -123,13 +123,13 @@ class App extends Component {
                               />
                     <hr/>
 
-                    <div className="buttons">
+                    <div className="arrow-buttons">
                       <div className="btn-toolbar mt-4" role="toolbar" aria-label="Quiz control">
                         <div className="btn-group mx-auto" role="group" aria-label="First group">
                           { 
                             this.props.globalIndex > 0 &&
                             <button type="button" 
-                                    className="btn btn-sm btn-info" 
+                                    className="btn btn-sm btn-outline-primary" 
                                     onClick={this.prevQuestion}>
                                     <i className="fa fa-arrow-left mr-1"></i>
                             </button>
@@ -138,7 +138,7 @@ class App extends Component {
                           {
                             this.props.globalIndex < this.props.questions.length - 1 && 
                               <button type="button" 
-                                    className="btn btn-sm btn-info" 
+                                    className="btn btn-sm btn-outline-primary" 
                                     onClick={this.nextQuestion}>
                                     <i className="fa fa-arrow-right ml-1"></i>
                               </button>

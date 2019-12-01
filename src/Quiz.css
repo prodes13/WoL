@@ -3,7 +3,7 @@
     position: relative;
 }
 
-.buttons, .send-button {
+.arrow-buttons, .send-button {
     position: relative;
     bottom: 0;
 }
@@ -13,4 +13,8 @@
     width: 90%;
     bottom: 6%;
     margin: 0 auto;
+}
+
+.btn-info {
+    border-radius: 10px;
 }
