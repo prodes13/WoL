@@ -79,18 +79,21 @@ class App extends Component {
     }
 
   render() {
-
+let isActive = true;
     const { isPending, question } = this.props;
     const show = this.state.start ? "d-block" : "d-none";
     const startScreen = this.state.start ? "d-none" : "d-flex";
-    
+
+    if(this.props.questionsAnswered) {
+      isActive = !((this.props.globalIndex+1) <= Object.values(this.props.questionsAnswered).length)
+    }
 
     return (
       <>
             <div className="container text-center">
 
             
-              <Jumbotron className={`quiz-box align-items-center ${startScreen}`}>
+              <Jumbotron className={`bg-light quiz-box align-items-center ${startScreen}`}>
                 <Button variant="primary"
                         size="lg"
                         block
@@ -101,7 +104,7 @@ class App extends Component {
               </Jumbotron>
             { 
               !this.state.isSubmit &&
-                <Jumbotron className={`quiz-box ${show}`}>
+                <Jumbotron className={`bg-light quiz-box ${show}`}>
                     {/* Loading questions */}
                     { isPending &&
                         <div className="spinner-border text-center" role="status">
@@ -123,13 +126,13 @@ class App extends Component {
                               />
                     <hr/>
 
-                    <div className="buttons">
+                    <div className="arrow-buttons">
                       <div className="btn-toolbar mt-4" role="toolbar" aria-label="Quiz control">
                         <div className="btn-group mx-auto" role="group" aria-label="First group">
                           { 
                             this.props.globalIndex > 0 &&
                             <button type="button" 
-                                    className="btn btn-sm btn-info" 
+                                    className="btn btn-sm btn-outline-primary" 
                                     onClick={this.prevQuestion}>
                                     <i className="fa fa-arrow-left mr-1"></i>
                             </button>
@@ -138,8 +141,9 @@ class App extends Component {
                           {
                             this.props.globalIndex < this.props.questions.length - 1 && 
                               <button type="button" 
-                                    className="btn btn-sm btn-info" 
-                                    onClick={this.nextQuestion}>
+                                    className="btn btn-sm btn-outline-primary" 
+                                    onClick={this.nextQuestion}
+                                    disabled={isActive}>
                                     <i className="fa fa-arrow-right ml-1"></i>
                               </button>
                           }

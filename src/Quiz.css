@@ -3,24 +3,18 @@
     position: relative;
 }
 
-.buttons, .send-button, .answer-buttons {
+.arrow-buttons, .send-button {
     position: relative;
     bottom: 0;
 }
 
-/* .buttons {
-    right: 42%;
-    bottom: 10%;
-    margin: 0 auto;
-} */
-
-/* .send-button {
-
-} */
-
 .answers {
     position: absolute;
     width: 90%;
-    bottom: 5%;
+    bottom: 6%;
     margin: 0 auto;
+}
+
+.btn-info {
+    border-radius: 10px;
 }
