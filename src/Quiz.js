@@ -79,11 +79,14 @@ class App extends Component {
     }
 
   render() {
-
+let isActive = true;
     const { isPending, question } = this.props;
     const show = this.state.start ? "d-block" : "d-none";
     const startScreen = this.state.start ? "d-none" : "d-flex";
-    
+
+    if(this.props.questionsAnswered) {
+      isActive = (this.props.globalIndex+1)!==Object.values(this.props.questionsAnswered).length
+    }
 
     return (
       <>
@@ -139,7 +142,8 @@ class App extends Component {
                             this.props.globalIndex < this.props.questions.length - 1 && 
                               <button type="button" 
                                     className="btn btn-sm btn-outline-primary" 
-                                    onClick={this.nextQuestion}>
+                                    onClick={this.nextQuestion}
+                                    disabled={isActive}>
                                     <i className="fa fa-arrow-right ml-1"></i>
                               </button>
                           }

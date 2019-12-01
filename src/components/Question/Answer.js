@@ -4,7 +4,7 @@ const Answer = (props) => {
     const stil = props.isChecked ? "btn-primary" : "btn-outline-primary";
     return (
         <>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <div className="btn-group btn-group-toggle" data-toggle="buttons">
           <label className={`btn ${stil} btn-xs mr-2`}>
             <input className="mr-2 text-center" 
               type="radio" 
