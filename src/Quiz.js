@@ -90,7 +90,7 @@ class App extends Component {
             <div className="container text-center">
 
             
-              <Jumbotron className={`quiz-box align-items-center ${startScreen}`}>
+              <Jumbotron className={`bg-light quiz-box align-items-center ${startScreen}`}>
                 <Button variant="primary"
                         size="lg"
                         block
@@ -101,7 +101,7 @@ class App extends Component {
               </Jumbotron>
             { 
               !this.state.isSubmit &&
-                <Jumbotron className={`quiz-box ${show}`}>
+                <Jumbotron className={`bg-light quiz-box ${show}`}>
                     {/* Loading questions */}
                     { isPending &&
                         <div className="spinner-border text-center" role="status">
