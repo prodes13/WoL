@@ -3,8 +3,8 @@ import './Quiz.css';
 import { connect } from 'react-redux';
 import { requestQuestions, returnQuestion, addGlobalIndex, minGlobalIndex, saveQuestions } from './redux/actions';
 import Question from './components/Question/Question';
-import ShowResults from './components/Results/ShowResults';
-import {Jumbotron, Button} from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
+import { Jumbotron, Button } from 'react-bootstrap';
 // parameter state comes from index.js provider store state(rootReducers)
 const mapStateToProps = (state) => {
   return {
@@ -143,25 +143,28 @@ class App extends Component {
                                     <i className="fa fa-arrow-right ml-1"></i>
                               </button>
                           }
-                          <button type="button" 
+                          { this.props.globalIndex > this.props.questions.length - 2 && 
+                            <button type="button" 
                                     onClick={this.submitAnswers}
                                     className="btn btn-outline-primary rounded ml-2 send-button">
                                     Submit
-                          </button>
+                            </button>
+                          }
                         </div>
                       </div>
                     </div>
                       </div>
-                  {/* submitting answers */}
                 </Jumbotron>
                 }
           </div>
-              {/* {
-                this.state.isSubmit && <ShowResults results={this.props.questionsAnswered} />
-              } */}
-              {
-                this.state.isSubmit && <ShowResults />
-              }
+            {
+              this.state.isSubmit && 
+                    <Redirect
+                      to={{
+                        pathname: "/results"
+                      }}
+                    />
+            }
           </>
     );
   }
