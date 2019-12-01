@@ -85,7 +85,7 @@ let isActive = true;
     const startScreen = this.state.start ? "d-none" : "d-flex";
 
     if(this.props.questionsAnswered) {
-      isActive = (this.props.globalIndex+1)!==Object.values(this.props.questionsAnswered).length
+      isActive = !((this.props.globalIndex+1) <= Object.values(this.props.questionsAnswered).length)
     }
 
     return (
