@@ -12,8 +12,8 @@ const Question =(props) => {
 
     if(props.question) return (
         <>
-            <p className="mb-4">{props.question.question}</p>
-            <div  className="answer-buttons">
+            <div className="row">
+            <div  className="col-xs-12 mx-auto">
                 {Object.values(props.question.answers)
                         .map((el, numAns) => <Answer key = {props.index +''+ numAns} 
                                                     answer={el} 
@@ -23,6 +23,7 @@ const Question =(props) => {
                                                     isChecked={getAnswered(numAns)}
                                                     category={props.question.topic}
                                                     />)}
+            </div>
             </div>
         </>
     );

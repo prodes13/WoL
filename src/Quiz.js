@@ -83,6 +83,7 @@ class App extends Component {
     const { isPending, question } = this.props;
     const show = this.state.start ? "d-block" : "d-none";
     const startScreen = this.state.start ? "d-none" : "d-flex";
+    
 
     return (
       <>
@@ -108,6 +109,12 @@ class App extends Component {
                           <span>Loading...</span>
                         </div>
                     }
+
+                    {
+                      this.props.question && 
+                      <p className="mb-4">{this.props.question.question}</p>
+                    }
+                    <div className="answers">
                     <Question key={this.props.globalIndex} 
                               question = {question} 
                               index = {this.props.globalIndex} 
@@ -122,32 +129,32 @@ class App extends Component {
                           { 
                             this.props.globalIndex > 0 &&
                             <button type="button" 
-                                    className="btn btn-info" 
+                                    className="btn btn-sm btn-info" 
                                     onClick={this.prevQuestion}>
-                                    <i className="fa fa-arrow-left mr-3"></i>
+                                    <i className="fa fa-arrow-left mr-1"></i>
                             </button>
                           }
                           <span className="badge"><h3>{this.props.globalIndex + 1}/{this.props.questions.length}</h3></span>
                           {
                             this.props.globalIndex < this.props.questions.length - 1 && 
                               <button type="button" 
-                                    className="btn btn-info" 
+                                    className="btn btn-sm btn-info" 
                                     onClick={this.nextQuestion}>
-                                    <i className="fa fa-arrow-right ml-3"></i>
+                                    <i className="fa fa-arrow-right ml-1"></i>
                               </button>
-                            }
+                          }
+                          <button type="button" 
+                                    onClick={this.submitAnswers}
+                                    className="btn btn-outline-primary rounded ml-2 send-button">
+                                    Submit
+                          </button>
                         </div>
                       </div>
                     </div>
+                      </div>
                   {/* submitting answers */}
-                  <button type="button" 
-                          onClick={this.submitAnswers}
-                          className="btn btn-outline-primary mt-5 send-button">
-                          Trimite raspunsurile tale
-                  </button>
                 </Jumbotron>
                 }
-
           </div>
               {/* {
                 this.state.isSubmit && <ShowResults results={this.props.questionsAnswered} />
