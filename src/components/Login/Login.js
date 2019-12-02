@@ -16,9 +16,9 @@ const Login = () => (
           <Form.Label>Parola</Form.Label>
           <Form.Control type="password" placeholder="Introdu parola" />
         </Form.Group>
-        <Form.Group controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Retine datele de logare" />
-        </Form.Group>
+        
+        <br />
+
         <Button variant="primary"
                 type="submit"
                 size="lg"
