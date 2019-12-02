@@ -9,6 +9,8 @@ import AppNavbar from './components/Layout/AppNavbar';
 import Home from './components/Home/Home';
 import Quiz from './Quiz';
 import ShowResults from "./components/Results/ShowResults";
+import SignIn from "./components/AuthComponent/SignIn";
+import SignUp from "./components/AuthComponent/SignUp";
 export default function App() {
   return (
     <Router>
@@ -22,6 +24,12 @@ export default function App() {
           </Route>
           <Route path="/results">
             <ShowResults />
+          </Route>
+          <Route path="/signin">
+            <SignIn/>
+          </Route>
+          <Route path="/signup">
+            <SignUp />
           </Route>
         </Switch>
     </Router>

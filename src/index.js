@@ -2,14 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// Firebase App (the core Firebase SDK) is always required and
-// must be listed before other Firebase SDKs
-import * as firebase from "firebase/app";
-
 // Add the Firebase services that you want to use
 import "firebase/auth";
 import "firebase/firestore";
 import "firebase/database";
+import { reduxFirestore, getFirestore } from 'redux-firestore';
+import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
+import fbConfig from './config/fbConfig'
 
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
@@ -24,50 +23,50 @@ import { requestQuestions, returnQuestion, returnGlobalIndex, saveQuestions} fro
 
 
 import * as serviceWorker from './serviceWorker';
-import { firebaseConfig } from './config/fbConfig';
+import authReducer from './redux/authReducer';
+import projectReducer from './redux/projectReducer';
+import { firestoreReducer } from 'redux-firestore';
+import { firebaseReducer } from 'react-redux-firebase'
 
 // const logger = createLogger()
 
-const rootReducers = combineReducers({requestQuestions, returnQuestion, returnGlobalIndex, saveQuestions})
+const rootReducers = combineReducers({
+    requestQuestions, 
+    returnQuestion, 
+    returnGlobalIndex, 
+    saveQuestions,
+    auth: authReducer,
+    project: projectReducer,
+    firestore: firestoreReducer,
+    firebase: firebaseReducer
+})
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-
-firebase.initializeApp(firebaseConfig);
-
-console.log(firebase.database().ref().child('questions'));
 
 
 
 
 
 // const store = createStore(rootReducers, composeEnhancer(applyMiddleware(thunkMiddleware, logger)))
-const store = createStore(rootReducers, composeEnhancer(applyMiddleware(thunkMiddleware)));
+const store = createStore(rootReducers, composeEnhancer(applyMiddleware(thunkMiddleware.withExtraArgument({getFirebase, getFirestore})),
+reactReduxFirebase(fbConfig, {userProfile: 'users', useFirestoreForProfile: true, attachAuthIsReady: true}),
+reduxFirestore(fbConfig) // redux bindings for firestore
+));
 
-ReactDOM.render(
-    <Provider store = {store}>
-        <App />
-    </Provider>, document.getElementById('root'));
+store.firebaseAuthIsReady.then(() => {
+    ReactDOM.render(
+        <Provider store = {store}>
+            <App />
+        </Provider>, document.getElementById('root'));
+    });
 serviceWorker.unregister();
 
 
-// for database firebase
-
-// https://firebase.google.com/docs/database/web/structure-data
-
-
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import './index.css';
-// import App from './App';
-// import registerServiceWorker from './registerServiceWorker';
 // import { createStore, applyMiddleware, compose } from 'redux'
 // import rootReducer from './store/reducers/rootReducer'
 // import { Provider } from 'react-redux'
-// import thunk from 'redux-thunk'
-// import { reduxFirestore, getFirestore } from 'redux-firestore';
-// import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
-// import fbConfig from './config/fbConfig'
+// import thunk from 'redux-thunk'NPM
 
 // const store = createStore(rootReducer,
 //   compose(
