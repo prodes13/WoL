@@ -1,8 +1,10 @@
 import React from 'react';
-import {Navbar, Nav, Container} from 'react-bootstrap';
+import {Navbar, Nav, Container, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+import { signOut } from '../../redux/authActions';
 import { connect } from 'react-redux'
+
 
 const AppNavbar = (props) => {
 
@@ -36,7 +38,8 @@ const AppNavbar = (props) => {
             </Nav>
             <Nav>
               <Navbar.Text>
-                    Logat ca: <Link to="/profile">{profile.firstName}</Link>
+                    {/* Logat ca: <Link to="/profile">{profile.firstName}</Link> */}
+                    {profile.firstName}<Button onClick={props.signOut()}>Signout</Button>
               </Navbar.Text>
             </Nav>
           </Navbar.Collapse>
@@ -52,8 +55,14 @@ const mapStateToProps = (state) => {
     profile: state.firebase.profile
   }
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signOut: () => dispatch(signOut())
+  }
+}
 
-export default connect(mapStateToProps)(AppNavbar)
+export default connect(mapStateToProps, mapDispatchToProps)(AppNavbar)
+
 
 /*
 

@@ -87,3 +87,6 @@ serviceWorker.unregister();
 // then i just installed exactly the same versions as on his github: 
 
 // npm install react-redux@5.1.1 react-redux-firebase@2.1.6 redux-firestore@0.5.7 firebase@5.3.0
+
+
+// https://github.com/iamshaunjp/React-Redux-Firebase-App/tree/lesson-31/marioplan/src/components/projects
