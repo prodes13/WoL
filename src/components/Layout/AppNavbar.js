@@ -25,6 +25,8 @@ const AppNavbar = () => {
             <Nav className="mr-auto">
                 <Link className="nav-link" to='/quiz'>Test</Link>
                 <Link className="nav-link"  to='/results'>Evaluarea ta</Link>
+                <Link className="nav-link"  to='/register'>Inregistrare</Link>
+                <Link className="nav-link"  to='/login'>Autentificare</Link>
             </Nav>
             <Nav>
               <Navbar.Text>
