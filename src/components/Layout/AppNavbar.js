@@ -35,11 +35,13 @@ const AppNavbar = (props) => {
             <Nav className="mr-auto">
                 <Link className="nav-link" to='/quiz'>Test</Link>
                 <Link className="nav-link"  to='/results'>Evaluarea ta</Link>
+                
+                <Link className="nav-link"  to='/create'>Creeaza</Link>
             </Nav>
             <Nav>
               <Navbar.Text>
                     {/* Logat ca: <Link to="/profile">{profile.firstName}</Link> */}
-                    {profile.firstName}<Button onClick={props.signOut()}>Signout</Button>
+                    {profile.firstName}<Button onClick={props.signOut}>Signout</Button>
               </Navbar.Text>
             </Nav>
           </Navbar.Collapse>

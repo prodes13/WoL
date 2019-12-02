@@ -11,6 +11,9 @@ import Quiz from './Quiz';
 import ShowResults from "./components/Results/ShowResults";
 import SignIn from "./components/AuthComponent/SignIn";
 import SignUp from "./components/AuthComponent/SignUp";
+import CreateQuestion from "./components/FirebaseQuestion/CreateQuestion";
+
+
 export default function App() {
   return (
     <Router>
@@ -30,6 +33,9 @@ export default function App() {
           </Route>
           <Route path="/signup">
             <SignUp />
+          </Route>
+          <Route path="/create">
+            <CreateQuestion />
           </Route>
         </Switch>
     </Router>
