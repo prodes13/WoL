@@ -15,8 +15,8 @@ const AppNavbar = () => {
                 height="30"
                 className="d-inline-block align-top"
               />
-                <span className="ml-3">
-                  Dezvoltare personală
+                <span className="ml-4">
+                  Wheel of Life
                 </span>
             </Navbar.Brand>
           </Link>
