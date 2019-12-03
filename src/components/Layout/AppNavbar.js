@@ -37,6 +37,7 @@ const AppNavbar = (props) => {
                 <Link className="nav-link"  to='/results'>Evaluarea ta</Link>
                 
                 <Link className="nav-link"  to='/create'>Creeaza</Link>
+                <Link className="nav-link"  to='/list'>Listare</Link>
             </Nav>
             <Nav>
               <Navbar.Text>
