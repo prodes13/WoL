@@ -10,7 +10,7 @@ import Home from './components/Home/Home';
 import Quiz from './Quiz';
 import ShowResults from "./components/Results/ShowResults";
 import Login from "./components/Login/Login";
-import Register from './components/Register/Register';
+import Registration from './components/Registration/Registration';
 import Profile from './components/Profile/Profile';
 export default function App() {
   return (
@@ -29,8 +29,8 @@ export default function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/register">
-            <Register />
+          <Route path="/registration">
+            <Registration />
           </Route>
           <Route path="/profile">
             <Profile />
