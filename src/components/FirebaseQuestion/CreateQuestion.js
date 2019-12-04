@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { createQuestion } from '../../redux/projectActions';
+import { createQuestion } from '../../redux/questionsActions';
 import { Redirect } from 'react-router-dom'
 
 import { Container, Jumbotron, Form, Button } from 'react-bootstrap'

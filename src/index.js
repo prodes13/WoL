@@ -24,7 +24,7 @@ import { requestQuestions, returnQuestion, returnGlobalIndex, saveQuestions} fro
 
 import * as serviceWorker from './serviceWorker';
 import authReducer from './redux/authReducer';
-import projectReducer from './redux/projectReducer';
+import questionsReducer from './redux/questionsReducer';
 import { firestoreReducer } from 'redux-firestore';
 import { firebaseReducer } from 'react-redux-firebase'
 
@@ -36,7 +36,7 @@ const rootReducers = combineReducers({
     returnGlobalIndex, 
     saveQuestions,
     auth: authReducer,
-    project: projectReducer,
+    questions: questionsReducer,
     firestore: firestoreReducer,
     firebase: firebaseReducer
 })

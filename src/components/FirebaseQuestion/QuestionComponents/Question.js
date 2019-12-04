@@ -1,12 +1,12 @@
 import React from 'react'
 import QuestionSummary from './QuestionsSummary'
 
-const Question = ({projects}) => {
+const Question = ({questions}) => {
   return (
     <div className="project-list section">
-      { projects && projects.map(project => {
+      { questions && questions.map(question => {
         return (
-            <QuestionSummary project={project} />
+            <QuestionSummary question={question} />
         )
       })}  
     </div>
