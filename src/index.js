@@ -18,9 +18,7 @@ import thunkMiddleware from 'redux-thunk';
 import './index.css';
 import App from './App';
 
-
-import { requestQuestions, returnQuestion, returnGlobalIndex, saveQuestions} from './redux/reducers'
-
+import { returnQuestion, returnGlobalIndex, saveQuestions} from './redux/reducers'
 
 import * as serviceWorker from './serviceWorker';
 import authReducer from './redux/authReducer';
@@ -31,7 +29,6 @@ import { firebaseReducer } from 'react-redux-firebase'
 // const logger = createLogger()
 
 const rootReducers = combineReducers({
-    requestQuestions, 
     returnQuestion, 
     returnGlobalIndex, 
     saveQuestions,
@@ -42,11 +39,6 @@ const rootReducers = combineReducers({
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-
-
-
-
 
 // const store = createStore(rootReducers, composeEnhancer(applyMiddleware(thunkMiddleware, logger)))
 const store = createStore(rootReducers, composeEnhancer(applyMiddleware(thunkMiddleware.withExtraArgument({getFirebase, getFirestore})),
@@ -61,32 +53,3 @@ store.firebaseAuthIsReady.then(() => {
         </Provider>, document.getElementById('root'));
     });
 serviceWorker.unregister();
-
-
-// import { createStore, applyMiddleware, compose } from 'redux'
-// import rootReducer from './store/reducers/rootReducer'
-// import { Provider } from 'react-redux'
-// import thunk from 'redux-thunk'NPM
-
-// const store = createStore(rootReducer,
-//   compose(
-//     applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
-//     reactReduxFirebase(fbConfig, {userProfile: 'users', useFirestoreForProfile: true, attachAuthIsReady: true}),
-//     reduxFirestore(fbConfig) // redux bindings for firestore
-//   )
-// );
-
-// store.firebaseAuthIsReady.then(() => {
-//   ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
-//   registerServiceWorker();
-// });
-
-
-// npm uninstall react-redux react-redux-firebase redux-firestore firebase
-
-// then i just installed exactly the same versions as on his github: 
-
-// npm install react-redux@5.1.1 react-redux-firebase@2.1.6 redux-firestore@0.5.7 firebase@5.3.0
-
-
-// https://github.com/iamshaunjp/React-Redux-Firebase-App/tree/lesson-31/marioplan/src/components/projects

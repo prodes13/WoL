@@ -1,20 +1,9 @@
-import { apiCall } from '../apiCall/apiCall'
 import {
-  REQUEST_QUESTIONS_PENDING,
-  REQUEST_QUESTIONS_SUCCESS,
-  REQUEST_QUESTIONS_FAILED,
   RETURN_QUESTION,
   QUESTION_INDEX_ADD,
   QUESTION_INDEX_MIN,
   SAVE_QUESTIONS_ANSWERS
  } from './constants'
-
-export const requestQuestions = () => (dispatch) => {
-  dispatch({ type: REQUEST_QUESTIONS_PENDING })
-  apiCall('/query')
-    .then(data => dispatch({ type: REQUEST_QUESTIONS_SUCCESS, payload: data[0].questions }))
-    .catch(error => dispatch({ type: REQUEST_QUESTIONS_FAILED, payload: error }))
-}
 
 export const saveQuestions = (answeredQuestion) => ({ type: SAVE_QUESTIONS_ANSWERS, payload: answeredQuestion});
 
