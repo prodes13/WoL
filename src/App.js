@@ -7,14 +7,11 @@ import {
 // import Link as well here, if component doesn't update
 import AppNavbar from './components/Layout/AppNavbar';
 import Home from './components/Home/Home';
-import Quiz from './Quiz';
 import ShowResults from "./components/Results/ShowResults";
 import SignIn from "./components/AuthComponent/SignIn";
 import SignUp from "./components/AuthComponent/SignUp";
 import CreateQuestion from "./components/FirebaseQuestion/CreateQuestion";
 import ListQuestions from "./components/FirebaseQuestion/ListQuestions";
-
-
 
 export default function App() {
   return (
@@ -25,7 +22,7 @@ export default function App() {
             <Home />
           </Route>
           <Route path="/quiz">
-            <Quiz />
+            <ListQuestions />
           </Route>
           <Route path="/results">
             <ShowResults />
@@ -38,9 +35,6 @@ export default function App() {
           </Route>
           <Route path="/create">
             <CreateQuestion />
-          </Route>
-          <Route path="/list">
-            <ListQuestions />
           </Route>
         </Switch>
     </Router>
