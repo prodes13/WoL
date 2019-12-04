@@ -27,6 +27,7 @@ class ListQuestions extends Component {
     const category = event.target.attributes.getNamedItem("data-category").value;
     // saving answered questions in REDUX
     this.props.saveQuestions({...this.props.questionsAnswered, [event.target.name]: [event.target.value, category]})
+    this.nextQuestion();
   }
 
     nextQuestion = () => {
