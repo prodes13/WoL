@@ -93,14 +93,6 @@ class ListQuestions extends Component {
               { 
                 !this.state.isSubmit &&
                   <Jumbotron className={`bg-light quiz-box ${show}`}>
-                      {/* Loading questions */}
-                      {/* { isPending &&
-                          <div className="spinner-border text-center" role="status">
-                            {/* <span className="sr-only">Loading...</span> */}
-                            {/* <span>Loading...</span> */}
-                          {/* </div> */}
-                      } */}
-  
                       {
                         this.props.question && 
                         <p className="mb-4">{this.props.question.question}</p>
