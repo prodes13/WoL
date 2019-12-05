@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom";
 // import Link as well here, if component doesn't update
-import AppNavbar from './components/Layout/AppNavbar';
+import AppNavbar from './components/Navigation/AppNavbar';
 import Home from './components/Home/Home';
 import ShowResults from "./components/Results/ShowResults";
 
