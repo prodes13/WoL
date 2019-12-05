@@ -9,9 +9,6 @@ import AppNavbar from './components/Layout/AppNavbar';
 import Home from './components/Home/Home';
 import ShowResults from "./components/Results/ShowResults";
 
-// eu
-import SignIn from "./components/AuthComponent/SignIn";
-import SignUp from "./components/AuthComponent/SignUp";
 import CreateQuestion from "./components/FirebaseQuestion/CreateQuestion";
 import ListQuestions from "./components/FirebaseQuestion/ListQuestions";
 // dumitru
@@ -33,13 +30,7 @@ export default function App() {
           </Route>
           <Route path="/results">
             <ShowResults />
-          </Route>
-          <Route path="/signin">
-            <SignIn/>
-          </Route>
-          <Route path="/signup">
-            <SignUp />
-          </Route>
+          </Route> 
           <Route path="/create">
             <CreateQuestion />
             </Route>
