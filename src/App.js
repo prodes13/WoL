@@ -8,10 +8,17 @@ import {
 import AppNavbar from './components/Layout/AppNavbar';
 import Home from './components/Home/Home';
 import ShowResults from "./components/Results/ShowResults";
+
+// eu
 import SignIn from "./components/AuthComponent/SignIn";
 import SignUp from "./components/AuthComponent/SignUp";
 import CreateQuestion from "./components/FirebaseQuestion/CreateQuestion";
 import ListQuestions from "./components/FirebaseQuestion/ListQuestions";
+// dumitru
+import Login from "./components/Login/Login";
+import Registration from './components/Registration/Registration';
+import Profile from './components/Profile/Profile';
+
 
 export default function App() {
   return (
@@ -35,6 +42,15 @@ export default function App() {
           </Route>
           <Route path="/create">
             <CreateQuestion />
+            </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/registration">
+            <Registration />
+          </Route>
+          <Route path="/profile">
+            <Profile />
           </Route>
         </Switch>
     </Router>

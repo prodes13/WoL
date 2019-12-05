@@ -27,8 +27,8 @@ const AppNavbar = (props) => {
                 height="30"
                 className="d-inline-block align-top"
               />
-                <span className="ml-3">
-                  Dezvoltare personală
+                <span className="ml-4">
+                  Wheel of Life
                 </span>
             </Navbar.Brand>
           </Link>
@@ -37,8 +37,9 @@ const AppNavbar = (props) => {
             <Nav className="mr-auto">
                 <Link className="nav-link" to='/quiz'>Test</Link>
                 <Link className="nav-link"  to='/results'>Evaluarea ta</Link>
-                
                 <Link className="nav-link"  to='/create'>Creeaza</Link>
+                <Link className="nav-link"  to='/login'>Autentificare</Link>
+                <Link className="nav-link"  to='/registration'>Inregistrare</Link>
             </Nav>
             <Nav>
               <Navbar.Text>

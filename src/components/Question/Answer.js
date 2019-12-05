@@ -5,8 +5,8 @@ const Answer = (props) => {
     return (
         <>
         <div className="btn-group btn-group-toggle" data-toggle="buttons">
-          <label className={`btn ${stil} btn-xs mr-2`}>
-            <input className="mr-2 text-center" 
+          <label className={`btn ${stil} btn-xs m-1`}>
+            <input className="mr-2" 
               type="radio" 
               name={`question${props.index}`} 
               value={props.numAns+1} 
