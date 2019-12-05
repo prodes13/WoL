@@ -22,12 +22,14 @@ const AppNavbar = (props) => {
             <Navbar.Brand>
               <img
                 alt=""
-                src="/logo192.png"
+                src="/logo.png"
                 width="30"
                 height="30"
                 className="d-inline-block align-top"
-              />{' '}
-              Dezvoltare personală
+              />
+                <span className="ml-3">
+                  Dezvoltare personală
+                </span>
             </Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
