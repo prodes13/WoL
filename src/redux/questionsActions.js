@@ -28,7 +28,7 @@ export const createQuestion = (question) => {
       const profile = getState().firebase.profile;
       const authorId = getState().firebase.auth.uid;
       firestore.collection('results').add({
-        ...results,
+        results,
         firstName: profile.firstName,
         lastName: profile.lastName,
         profileId: authorId

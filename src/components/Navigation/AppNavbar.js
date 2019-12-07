@@ -1,5 +1,5 @@
 import React from 'react';
-import {Navbar, Nav, Container, Button, NavDropdown} from 'react-bootstrap';
+import {Navbar, Nav, Container, NavDropdown} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import { signOut } from '../../redux/authActions';
@@ -44,7 +44,9 @@ const AppNavbar = (props) => {
             <Nav>
             <Navbar.Text>Logat ca: </Navbar.Text>
             <NavDropdown title={profile.firstName} id="collasible-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
+            <NavDropdown.Item>
+            <Link  className="nav-link" to='/profile'>Profil</Link>
+            </NavDropdown.Item>  
             <NavDropdown.Divider />
             <NavDropdown.Item onClick={props.signOut}>Logout</NavDropdown.Item>
           </NavDropdown>

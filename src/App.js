@@ -14,7 +14,7 @@ import ListQuestions from "./components/FirebaseQuestion/ListQuestions";
 // dumitru
 import Login from "./components/Login/Login";
 import Registration from './components/Registration/Registration';
-import Profile from './components/Profile/Profile';
+import TestHistory from "./components/TestHistory/TestHistory";
 
 
 export default function App() {
@@ -41,7 +41,7 @@ export default function App() {
             <Registration />
           </Route>
           <Route path="/profile">
-            <Profile />
+            <TestHistory />
           </Route>
         </Switch>
     </Router>
