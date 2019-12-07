@@ -2,7 +2,10 @@ import React from 'react';
 import Chart from 'chart.js';
 
 class ShowChart extends React.Component {
-
+    constructor(props) {
+        super(props);
+        this.state = {width: window.innerWidth};
+      }
     componentDidMount() {
         this.updateCanvas();
     }
@@ -10,7 +13,7 @@ class ShowChart extends React.Component {
         // console.log("CHART PROPS", this.props.data);
         const ctx = this.refs.canvas.getContext('2d');
         ctx.fillRect(0,0, 100, 100);
-        return new Chart(ctx, {
+        var grafic = new Chart(ctx, {
             type: 'polarArea',
             data: {
                 labels:  Object.keys(this.props.data),
@@ -46,10 +49,14 @@ class ShowChart extends React.Component {
                   display: false
                 },
                 legend: {
-                  display: true,
+                  display: true
                 }
             }
         }); 
+        
+        //display legend if width > 768px
+        (this.state.width > 768) ? grafic.config.options.legend.display = true : grafic.config.options.legend.display = false;
+        return grafic;
     }
     render() {
         // width={300} height={300}
