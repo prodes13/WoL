@@ -31,7 +31,8 @@ const mapDispatchToProps = (dispatch) => {
 class App extends Component {
   state = {
     start: false,
-    isSubmit: false
+    isSubmit: false,
+    animation: false
   }
     componentDidMount() {
       this.props.onRequestQuestions()
@@ -44,7 +45,13 @@ class App extends Component {
     const category = event.target.attributes.getNamedItem("data-category").value;
     // saving answered questions in REDUX
     this.props.saveQuestions({...this.props.questionsAnswered, [event.target.name]: [event.target.value, category]});
-    this.nextQuestion();
+
+    // start animation
+    this.setState({ animation: true })
+    // wait for fade out animation to end and change the question
+    setTimeout(() => this.nextQuestion(), 250)
+    // hack: remove the animation from the newly created question for a nice fade in effect
+    setTimeout(() => this.setState({ animation: false }), 251)
   }
 
     nextQuestion = () => {
@@ -89,6 +96,8 @@ let isActive = true;
       isActive = !((this.props.globalIndex+1) <= Object.values(this.props.questionsAnswered).length)
     }
 
+    const animationClass = this.state.animation ? 'opacity-0' : ''
+
     return (
       <>
             <div className="container text-center">
@@ -116,14 +125,14 @@ let isActive = true;
 
                     {
                       this.props.question && 
-                      <p className="mb-4">{this.props.question.question}</p>
+                      <p className={"mb-4 question " + animationClass}>{this.props.question.question}</p>
                     }
                     <div className="answers">
                     <Question key={this.props.globalIndex} 
                               question = {question} 
                               index = {this.props.globalIndex} 
                               radioInputHandling = { this.handleRadioSelect}
-                              savedQuestions = {this.props.questionsAnswered} 
+                              savedQuestions = {this.props.questionsAnswered}
                               />
                     <hr/>
 

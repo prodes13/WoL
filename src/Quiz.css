@@ -18,3 +18,11 @@
 .btn-info {
     border-radius: 10px;
 }
+
+.question {
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.opacity-0 {
+    opacity: 0;
+}
