@@ -22,3 +22,20 @@ export const createQuestion = (question) => {
       });
     }
   };
+  export const sendResults = (results) => {
+    return (dispatch, getState, {getFirestore}) => {
+      const firestore = getFirestore();
+      const profile = getState().firebase.profile;
+      const authorId = getState().firebase.auth.uid;
+      firestore.collection('results').add({
+        ...results,
+        firstName: profile.firstName,
+        lastName: profile.lastName,
+        profileId: authorId
+      }).then(() => {
+        dispatch({ type: 'SEND_RESULTS_SUCCESS' });
+      }).catch(err => {
+        dispatch({ type: 'SEND_RESULTS_ERROR' }, err);
+      });
+    }
+  };

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { firestoreConnect } from 'react-redux-firebase'
+import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 
@@ -143,7 +143,7 @@ class ListQuestions extends Component {
                   }
             </div>
               {
-                this.state.isSubmit && 
+                this.state.isSubmit &&
                       <Redirect
                         to={{
                           pathname: "/results"

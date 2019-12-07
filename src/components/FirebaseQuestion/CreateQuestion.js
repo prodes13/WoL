@@ -71,20 +71,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateQuestion)
-
-// title devine topic,
-// content devine question
-// "topic": "SĂNĂTATE ȘI ENERGIE",
-// "question": "Cât de fericit te simți cu starea generala de sănătate și de bună-dispoziție pe care le ai acum,  la acest moment?",
-// "answers": {
-//     "1": "1",
-//     "2": "2",
-//     "3": "3",
-//     "4": "4",
-//     "5": "5",
-//     "6": "6",
-//     "7": "7",
-//     "8": "8",
-//     "9": "9",
-//     "10": "10"
-// }

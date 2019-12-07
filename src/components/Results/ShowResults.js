@@ -2,12 +2,9 @@ import React from 'react';
 import ShowChart from './ShowChart';
 import { connect } from 'react-redux';
 
+import { Button } from 'react-bootstrap'
 
-const mapStateToProps = (state) => {
-    return {
-      results: state.saveQuestions.questionsAnswered
-    }
-  }
+import { sendResults } from '../../redux/questionsActions';
 
 const ShowResults = (props) => {
     const finalQuizResults = {};
@@ -46,9 +43,22 @@ const ShowResults = (props) => {
     }
     return  <div className="container text-center">
                 <h3>Rezultatele tale:</h3>
-                <ShowChart data={finalQuizResults}/>    
+                <ShowChart data={finalQuizResults}/> 
+                <Button onClick={props.sendResults(finalQuizResults)}>Save results</Button>   
             </div>
 }
 
-// action done from mapDispatchToProps will channge state from mapStateToProps
-export default connect(mapStateToProps)(ShowResults)
+const mapStateToProps = (state) => {
+    return {
+      results: state.saveQuestions.questionsAnswered,
+      auth: state.firebase.auth
+    }
+  }
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+      sendResults: (results) => dispatch(sendResults(results))
+    }
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(ShowResults)
