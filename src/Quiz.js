@@ -91,7 +91,7 @@ class App extends Component {
     const { isPending, question } = this.props;
     const show = this.state.start ? "d-block" : "d-none";
     const startScreen = this.state.start ? "d-none" : "d-flex";
-    const now = Math.floor(((this.props.globalIndex + 1) / 31) * 100);
+    const now = Math.floor(((this.props.globalIndex + 1) / this.props.questions.length) * 100);
 
     if (this.props.questionsAnswered) {
       isActive = !((this.props.globalIndex + 1) <= Object.values(this.props.questionsAnswered).length)
