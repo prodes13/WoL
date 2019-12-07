@@ -3,7 +3,7 @@ import { Container, Jumbotron } from 'react-bootstrap'
 
 const Profile = () => (
     <Container>
-        <Jumbotron className="bg-light">
+        <Jumbotron className="bg-light underConstruction">
             
         </Jumbotron>
     </Container>

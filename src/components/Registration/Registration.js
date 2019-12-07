@@ -3,7 +3,7 @@ import { Container, Jumbotron, Form, Button } from 'react-bootstrap'
 
 const Registration = () => (
     <Container>
-        <Jumbotron className="bg-light">
+        <Jumbotron className="bg-light underConstruction">
             <Form>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label><b>Adresa de email*</b></Form.Label>
