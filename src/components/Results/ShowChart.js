@@ -10,10 +10,12 @@ class ShowChart extends React.Component {
         this.updateCanvas();
     }
     updateCanvas() {
+        let isShown = false;
         // console.log("CHART PROPS", this.props.data);
+        (this.state.width > 768) ? isShown = true : isShown = false;
         const ctx = this.refs.canvas.getContext('2d');
         ctx.fillRect(0,0, 100, 100);
-        var grafic = new Chart(ctx, {
+        return new Chart(ctx, {
             type: 'polarArea',
             data: {
                 labels:  Object.keys(this.props.data),
@@ -49,14 +51,10 @@ class ShowChart extends React.Component {
                   display: false
                 },
                 legend: {
-                  display: true
+                  display: isShown
                 }
             }
         }); 
-        
-        //display legend if width > 768px
-        (this.state.width > 768) ? grafic.config.options.legend.display = true : grafic.config.options.legend.display = false;
-        return grafic;
     }
     render() {
         // width={300} height={300}
