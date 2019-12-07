@@ -30,7 +30,7 @@ const AppNavbar = () => {
             </Nav>
             <Nav>
               <Navbar.Text>
-                    Logat ca: <Link to="/profile">Florin</Link>
+                    {/* Logat ca: <Link to="/profile">Florin</Link> */}
               </Navbar.Text>
             </Nav>
           </Navbar.Collapse>
