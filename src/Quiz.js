@@ -91,9 +91,9 @@ class App extends Component {
     const { isPending, question } = this.props;
     const show = this.state.start ? "d-block" : "d-none";
     const startScreen = this.state.start ? "d-none" : "d-flex";
-    const now = Math.floor(((this.props.globalIndex + 1) / this.props.questions.length) * 100);
-
+    let barPercentage = 0;
     if (this.props.questionsAnswered) {
+      barPercentage = Math.floor(((Object.values(this.props.questionsAnswered).length) / this.props.questions.length) * 100);
       isActive = !((this.props.globalIndex + 1) <= Object.values(this.props.questionsAnswered).length)
     }
 
@@ -138,9 +138,9 @@ class App extends Component {
                  
                 <ProgressBar 
                 className="m-4"
-                now={now}
+                now={barPercentage}
                 animated
-                label={`${now}%`}
+                label={`${barPercentage}%`}
                 />
 
                 <div className="arrow-buttons">
