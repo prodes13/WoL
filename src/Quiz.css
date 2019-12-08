@@ -9,9 +9,6 @@
 }
 
 .answers {
-    position: absolute;
-    width: 90%;
-    bottom: 6%;
     margin: 0 auto;
 }
 
@@ -21,6 +18,7 @@
 
 .question {
     transition: opacity 0.3s, visibility 0.3s;
+    min-height: 12em;
 }
 
 .opacity-0 {
