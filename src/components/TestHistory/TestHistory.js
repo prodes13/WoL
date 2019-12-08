@@ -8,16 +8,13 @@ const TestHistory = (props) => {
     let results = {};
     let username = null;
     if(props.results) {
-        console.log("&&&", Object.values(props.results[0]));
-        results = Object.values(props.results[0])[4];
-        username = Object.values(props.results[0])[2];
+        console.log("&&&", props.results);
     }
     console.log(results);
 
     return <>
     {   
         props.results && (
-        
             <ShowChart data={results}/>
         ) 
     }
