@@ -49,9 +49,9 @@ class App extends Component {
     // start animation
     this.setState({ animation: true })
     // wait for fade out animation to end and change the question
-    setTimeout(() => this.nextQuestion(), 250)
+    setTimeout(() => this.nextQuestion(), 100)
     // hack: remove the animation from the newly created question for a nice fade in effect
-    setTimeout(() => this.setState({ animation: false }), 251)
+    setTimeout(() => this.setState({ animation: false }), 101)
   }
 
   nextQuestion = () => {
@@ -93,7 +93,7 @@ class App extends Component {
     const startScreen = this.state.start ? "d-none" : "d-flex";
     let barPercentage = 0;
     if (this.props.questionsAnswered) {
-      barPercentage = Math.floor(((Object.values(this.props.questionsAnswered).length) / this.props.questions.length) * 100);
+      barPercentage = Math.round(((Object.values(this.props.questionsAnswered).length) / this.props.questions.length) * 100);
       isActive = !((this.props.globalIndex + 1) <= Object.values(this.props.questionsAnswered).length)
     }
 
