@@ -44,7 +44,7 @@ const ShowResults = (props) => {
     return  <div className="container text-center">
                 <h3>Rezultatele tale:</h3>
                 <ShowChart data={finalQuizResults}/> 
-                <Button onClick={props.sendResults(finalQuizResults)}>Save results</Button>   
+                <Button onClick={() => props.sendResults(finalQuizResults)}>Save results</Button>   
             </div>
 }
 

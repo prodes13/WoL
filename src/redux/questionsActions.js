@@ -31,7 +31,8 @@ export const createQuestion = (question) => {
         results,
         firstName: profile.firstName,
         lastName: profile.lastName,
-        profileId: authorId
+        profileId: authorId,
+        takenAt: new Date()
       }).then(() => {
         dispatch({ type: 'SEND_RESULTS_SUCCESS' });
       }).catch(err => {
