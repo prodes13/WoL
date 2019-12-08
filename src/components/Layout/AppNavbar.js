@@ -24,7 +24,7 @@ const AppNavbar = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
                 <Link className="nav-link" to='/quiz'>Test</Link>
-                <Link className="nav-link"  to='/results'>Evaluarea ta</Link>
+                {/* <Link className="nav-link"  to='/results'>Evaluarea ta</Link> */}
                 <Link className="nav-link"  to='/login'>Autentificare</Link>
                 <Link className="nav-link"  to='/registration'>Inregistrare</Link>
             </Nav>
