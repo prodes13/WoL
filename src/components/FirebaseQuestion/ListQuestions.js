@@ -67,8 +67,8 @@ class ListQuestions extends Component {
       let isActive = true;
       let length = 0;
       const { question, questions } = this.props;
-      if(this.props.questions) {
-        length = this.props.questions.length;
+      if(questions) {
+        length = questions.length;
       }
       const show = this.state.start ? "d-block" : "d-none";
       const startScreen = this.state.start ? "d-none" : "d-flex";
