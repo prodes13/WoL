@@ -10,7 +10,7 @@ import Home from './components/Home/Home';
 import ShowResults from "./components/Results/ShowResults";
 
 import CreateQuestion from "./components/FirebaseQuestion/CreateQuestion";
-import ListQuestions from "./components/FirebaseQuestion/ListQuestions";
+import Quiz from "./Quiz";
 // dumitru
 import Login from "./components/Login/Login";
 import Registration from './components/Registration/Registration';
@@ -26,7 +26,7 @@ export default function App() {
             <Home />
           </Route>
           <Route path="/quiz">
-            <ListQuestions />
+            <Quiz />
           </Route>
           <Route path="/results">
             <ShowResults />
