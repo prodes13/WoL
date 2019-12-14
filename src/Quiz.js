@@ -6,7 +6,7 @@ import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import { returnQuestion, addGlobalIndex, minGlobalIndex, saveQuestions } from './redux/actions';
 import Question from './components/Question/Question';
-import { Jumbotron, Button } from 'react-bootstrap';
+import { Jumbotron, Button, ProgressBar } from 'react-bootstrap';
 
 class Quiz extends Component {
   state = {
@@ -69,17 +69,18 @@ class Quiz extends Component {
 
   render() {
     let isActive = true;
-      let length = 0;
-      const { question, questions } = this.props;
-      if(questions) {
-        length = questions.length;
-      }
-      const show = this.state.start ? "d-block" : "d-none";
-      const startScreen = this.state.start ? "d-none" : "d-flex";
-  
-      if(this.props.questionsAnswered) {
-        isActive = !((this.props.globalIndex+1) <= Object.values(this.props.questionsAnswered).length)
-      }
+    let length = 0;
+    const { question, questions } = this.props;
+    if(questions) {
+      length = questions.length;
+    }
+    const show = this.state.start ? "d-block" : "d-none";
+    const startScreen = this.state.start ? "d-none" : "d-flex";
+    let barPercentage = 0;
+    if (this.props.questionsAnswered) {
+      barPercentage = Math.round(((Object.values(this.props.questionsAnswered).length) / this.props.questions.length) * 100);
+      isActive = !((this.props.globalIndex + 1) <= Object.values(this.props.questionsAnswered).length)
+    }
 
     const animationClass = this.state.animation ? 'opacity-0' : ''
 
@@ -111,8 +112,12 @@ class Quiz extends Component {
                               radioInputHandling = { this.handleRadioSelect}
                               savedQuestions = {this.props.questionsAnswered}
                               />
-                    <hr/>
-
+                    <ProgressBar
+                      className="m-4"
+                      now={barPercentage}
+                      animated
+                      label={`${barPercentage}%`}
+                    />
                     <div className="arrow-buttons">
                       <div className="btn-toolbar mt-4" role="toolbar" aria-label="Quiz control">
                         <div className="btn-group mx-auto" role="group" aria-label="First group">
