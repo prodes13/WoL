@@ -49,9 +49,9 @@ class App extends Component {
     // start animation
     this.setState({ animation: true })
     // wait for fade out animation to end and change the question
-    setTimeout(() => this.nextQuestion(), 100)
+    setTimeout(() => this.nextQuestion(), 150)
     // hack: remove the animation from the newly created question for a nice fade in effect
-    setTimeout(() => this.setState({ animation: false }), 101)
+    setTimeout(() => this.setState({ animation: false }), 151)
   }
 
   nextQuestion = () => {
@@ -126,7 +126,7 @@ class App extends Component {
 
               {
                 this.props.question &&
-                <p className={"mb-4 question " + animationClass}>{this.props.question.question}</p>
+                <p className={"mb-4 question" + " " + animationClass}>{this.props.question.question}</p>
               }
               <div className="answers">
                 <Question key={this.props.globalIndex}
@@ -135,12 +135,12 @@ class App extends Component {
                   radioInputHandling={this.handleRadioSelect}
                   savedQuestions={this.props.questionsAnswered}
                 />
-                 
-                <ProgressBar 
-                className="m-4"
-                now={barPercentage}
-                animated
-                label={`${barPercentage}%`}
+
+                <ProgressBar
+                  className="m-4"
+                  now={barPercentage}
+                  animated
+                  label={`${barPercentage}%`}
                 />
 
                 <div className="arrow-buttons">
