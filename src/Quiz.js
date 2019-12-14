@@ -126,7 +126,7 @@ class App extends Component {
 
               {
                 this.props.question &&
-                <p className={"mb-4 question" + " " + animationClass}>{this.props.question.question}</p>
+                <p className={"mb-4 question " + animationClass}>{this.props.question.question}</p>
               }
               <div className="answers">
                 <Question key={this.props.globalIndex}
