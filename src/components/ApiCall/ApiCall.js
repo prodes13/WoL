@@ -16,12 +16,11 @@ class ApiCall extends React.Component {
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result);
                     
                     this.setState({
                         isLoaded: true,
                         items: result
-                    }, () => console.log(this.state.items)
+                    },
                     );
                 },
                 // Note: it's important to handle errors here
