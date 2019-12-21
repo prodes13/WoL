@@ -1,8 +1,8 @@
 import React from 'react';
 
 class ApiCall extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             error: null,
             isLoaded: false,
@@ -46,12 +46,11 @@ class ApiCall extends React.Component {
         } else {
             return (
                 <ul>
-                    {/* fix this
                     {items.map(item => (
                         <li key={item.name}>
                             {item.name} {item.answer}
                         </li>
-                    ))} */}
+                    ))}
                 </ul>
             );
         }

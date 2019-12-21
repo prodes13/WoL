@@ -49,9 +49,9 @@ class App extends Component {
     // start animation
     this.setState({ animation: true })
     // wait for fade out animation to end and change the question
-    setTimeout(() => this.nextQuestion(), 150)
+    setTimeout(() => this.nextQuestion(), 200)
     // hack: remove the animation from the newly created question for a nice fade in effect
-    setTimeout(() => this.setState({ animation: false }), 151)
+    setTimeout(() => this.setState({ animation: false }), 201)
   }
 
   nextQuestion = () => {
