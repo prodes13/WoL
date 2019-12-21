@@ -16,10 +16,13 @@ class ApiCall extends React.Component {
             .then(res => res.json())
             .then(
                 (result) => {
+                    console.log(result);
+                    
                     this.setState({
                         isLoaded: true,
-                        items: result.items
-                    });
+                        items: result
+                    }, () => console.log(this.state.items)
+                    );
                 },
                 // Note: it's important to handle errors here
                 // instead of a catch() block so that we don't swallow
@@ -35,6 +38,7 @@ class ApiCall extends React.Component {
 
     render() {
         const { error, isLoaded, items } = this.state;
+        
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {

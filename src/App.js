@@ -12,6 +12,7 @@ import ShowResults from "./components/Results/ShowResults";
 import Login from "./components/Login/Login";
 import Registration from './components/Registration/Registration';
 import Profile from './components/Profile/Profile';
+import Data from  './components/ApiCall/ApiCall';
 export default function App() {
   return (
     <Router>
@@ -19,6 +20,9 @@ export default function App() {
         <Switch>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route exact path="/data">
+            <Data />
           </Route>
           <Route path="/quiz">
             <Quiz />

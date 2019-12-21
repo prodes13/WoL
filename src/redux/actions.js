@@ -11,7 +11,7 @@ import {
 
 export const requestQuestions = () => (dispatch) => {
   dispatch({ type: REQUEST_QUESTIONS_PENDING })
-  apiCall('/query')
+  apiCall('http://localhost:3300/query')
     .then(data => dispatch({ type: REQUEST_QUESTIONS_SUCCESS, payload: data[0].questions }))
     .catch(error => dispatch({ type: REQUEST_QUESTIONS_FAILED, payload: error }))
 }
