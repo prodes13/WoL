@@ -6,26 +6,26 @@ class ApiCall extends React.Component {
         this.state = {
             error: null,
             isLoaded: false,
-            name: "",
-            answer: ""
+            questions: []
         };
     }
 
-    componentDidMount() {
+        componentDidMount() {
+        
+        // questions are fetched from the server
         fetch("http://ec2-35-180-208-195.eu-west-3.compute.amazonaws.com/data")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    
+            // parsing questions in JSON format
+            .then(response => response.json())
+            // porting questions into state
+            .then(data => {
                     this.setState({
                         isLoaded: true,
-                        items: result
+                        questions: data
                     },
                     );
                 },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
+                // it's important to handle errors here instead of a catch() block
+                // so that we don't swallow exceptions from actual bugs in components
                 (error) => {
                     this.setState({
                         isLoaded: true,
@@ -36,7 +36,7 @@ class ApiCall extends React.Component {
     }
 
     render() {
-        const { error, isLoaded, items } = this.state;
+        const { error, isLoaded } = this.state;
         
         if (error) {
             return <div>Error: {error.message}</div>;
@@ -44,13 +44,13 @@ class ApiCall extends React.Component {
             return <div>Loading...</div>;
         } else {
             return (
-                <ul>
-                    {items.map(item => (
-                        <li key={item.name}>
-                            {item.name} {item.answer}
+                <div>
+                    {this.state.questions.map(questions => (
+                        <li key={questions.id}>
+                            {questions.id}. {questions.name}
                         </li>
                     ))}
-                </ul>
+                </div>
             );
         }
     }
