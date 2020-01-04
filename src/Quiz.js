@@ -63,11 +63,6 @@ class ApiCall extends React.Component {
   saveAnswer(value) {
     const question = this.state.questions[this.state.currentQuestion]
     question.answer = value
-
-    // this.setState({
-    //   questions: question
-    // })
-
     this.goToNextQuestion()
   }
 
@@ -76,7 +71,7 @@ class ApiCall extends React.Component {
     
     if (isDone) {
       return (
-        <SubmitQuiz />
+        <SubmitQuiz questions={questions} />
       )
     }
 
