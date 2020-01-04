@@ -70,16 +70,16 @@ class ApiCall extends React.Component {
         <nav>
           <ul className="pagination">
             <li className="page-item"><a className="page-link" href="#" onClick={this.goToPrevQuestion}>Previous</a></li>
-            <li className="page-item"><a className="page-link" href="#">1</a></li>
-            <li className="page-item"><a className="page-link" href="#">2</a></li>
-            <li className="page-item"><a className="page-link" href="#">3</a></li>
-            <li className="page-item"><a className="page-link" href="#">4</a></li>
-            <li className="page-item"><a className="page-link" href="#">5</a></li>
-            <li className="page-item"><a className="page-link" href="#">6</a></li>
-            <li className="page-item"><a className="page-link" href="#">7</a></li>
-            <li className="page-item"><a className="page-link" href="#">8</a></li>
-            <li className="page-item"><a className="page-link" href="#">9</a></li>
-            <li className="page-item"><a className="page-link" href="#">10</a></li>
+            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>1</a></li>
+            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>2</a></li>
+            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>3</a></li>
+            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>4</a></li>
+            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>5</a></li>
+            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>6</a></li>
+            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>7</a></li>
+            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>8</a></li>
+            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>9</a></li>
+            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>10</a></li>
             <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>Next</a></li>
           </ul>
         </nav>
