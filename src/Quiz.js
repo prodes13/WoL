@@ -1,5 +1,6 @@
 import React from 'react';
 import { call } from './api'
+import SubmitQuiz from './SubmitQuiz'
 
 class ApiCall extends React.Component {
   // initial state
@@ -8,6 +9,7 @@ class ApiCall extends React.Component {
     isLoaded: false,
     questions: [],
     currentQuestion: 0,
+    isDone: false,
   };
 
   constructor(props) {
@@ -15,6 +17,7 @@ class ApiCall extends React.Component {
 
     this.goToNextQuestion = this.goToNextQuestion.bind(this)
     this.goToPrevQuestion = this.goToPrevQuestion.bind(this)
+    this.saveAnswer = this.saveAnswer.bind(this)
   }
 
   componentDidMount() {
@@ -40,9 +43,15 @@ class ApiCall extends React.Component {
   }
 
   goToNextQuestion() {
-    this.setState({
-      currentQuestion: this.state.currentQuestion + 1
-    })
+    if(this.state.currentQuestion >= this.state.questions.length-1) {
+      this.setState({
+        isDone: true,
+      })  
+    } else {
+      this.setState({
+        currentQuestion: this.state.currentQuestion + 1
+      })  
+    }
   }
 
   goToPrevQuestion() {
@@ -51,9 +60,25 @@ class ApiCall extends React.Component {
     })
   }
 
+  saveAnswer(value) {
+    const question = this.state.questions[this.state.currentQuestion]
+    question.answer = value
+
+    // this.setState({
+    //   questions: question
+    // })
+
+    this.goToNextQuestion()
+  }
 
   render() {
-    const { questions, isLoaded } = this.state;
+    const { questions, isLoaded, isDone } = this.state;
+    
+    if (isDone) {
+      return (
+        <SubmitQuiz />
+      )
+    }
 
     if (!isLoaded)
       return (
@@ -77,7 +102,7 @@ class ApiCall extends React.Component {
               : <div></div>}
 
             {answers.map(answer =>
-              <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>{answer}</a></li>
+              <li className="page-item"><a className="page-link" href="#" onClick={() => this.saveAnswer(answer)}>{answer}</a></li>
             )}
 
             {this.state.currentQuestion < questions.length - 1
