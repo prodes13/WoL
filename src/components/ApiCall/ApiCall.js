@@ -45,9 +45,9 @@ class ApiCall extends React.Component {
             return (
                 <div>
                     {this.state.questions.map(questions => (
-                        <li key={questions.id}>
-                            {questions.id}. {questions.name}
-                        </li>
+                        <p key={questions.id}>
+                            {questions.name}
+                        </p>
                     ))}
                 </div>
             );
