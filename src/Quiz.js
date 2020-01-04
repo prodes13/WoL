@@ -47,9 +47,10 @@ class ApiCall extends React.Component {
 
   goToPrevQuestion() {
     this.setState({
-      currentQuestion: this.state.currentQuestion - 1 
+      currentQuestion: this.state.currentQuestion - 1
     })
   }
+
 
   render() {
     const { questions, isLoaded } = this.state;
@@ -60,6 +61,7 @@ class ApiCall extends React.Component {
       )
 
     const currentQuestion = questions[this.state.currentQuestion]
+    const answers = currentQuestion.answers_json
 
     return (
       <div>
@@ -69,18 +71,19 @@ class ApiCall extends React.Component {
 
         <nav>
           <ul className="pagination">
-            <li className="page-item"><a className="page-link" href="#" onClick={this.goToPrevQuestion}>Previous</a></li>
-            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>1</a></li>
-            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>2</a></li>
-            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>3</a></li>
-            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>4</a></li>
-            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>5</a></li>
-            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>6</a></li>
-            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>7</a></li>
-            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>8</a></li>
-            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>9</a></li>
-            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>10</a></li>
-            <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>Next</a></li>
+
+            {this.state.currentQuestion > 0
+              ? <li className="page-item"><a className="page-link" href="#" onClick={this.goToPrevQuestion}>Previous</a></li>
+              : <div></div>}
+
+            {answers.map(answer =>
+              <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>{answer}</a></li>
+            )}
+
+            {this.state.currentQuestion < questions.length - 1
+              ? <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>Next</a></li>
+              : <div></div>}
+
           </ul>
         </nav>
       </div>
