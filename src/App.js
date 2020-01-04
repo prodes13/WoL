@@ -12,11 +12,12 @@ import ShowResults from "./components/Results/ShowResults";
 import Login from "./components/Login/Login";
 import Registration from './components/Registration/Registration';
 import Profile from './components/Profile/Profile';
-import Data from  './components/ApiCall/ApiCall';
+import Data from './components/ApiCall/ApiCall';
 export default function App() {
   return (
     <Router>
       <AppNavbar />
+      <div className="container">
         <Switch>
           <Route exact path="/">
             <Home />
@@ -40,6 +41,7 @@ export default function App() {
             <Profile />
           </Route>
         </Switch>
+      </div>
     </Router>
   );
 }
