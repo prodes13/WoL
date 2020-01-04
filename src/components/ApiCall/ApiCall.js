@@ -1,4 +1,5 @@
 import React from 'react';
+import { call } from '../../api'
 
 class ApiCall extends React.Component {
     constructor() {
@@ -13,9 +14,7 @@ class ApiCall extends React.Component {
         componentDidMount() {
         
         // questions are fetched from the server
-        fetch("http://ec2-35-180-208-195.eu-west-3.compute.amazonaws.com/data")
-            // parsing questions in JSON format
-            .then(response => response.json())
+        call()
             // porting questions into state
             .then(data => {
                     this.setState({
