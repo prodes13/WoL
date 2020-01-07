@@ -1,4 +1,4 @@
-import { call } from '../api'
+import { call } from '../api';
 import {
   REQUEST_QUESTIONS_PENDING,
   REQUEST_QUESTIONS_SUCCESS,

@@ -98,7 +98,7 @@ class App extends Component {
     }
 
     const animationClass = this.state.animation ? 'opacity-0' : ''
-
+    
     return (
       <>
         <div className="container text-center">
@@ -154,7 +154,7 @@ class App extends Component {
                           <i className="fa fa-arrow-left mr-1"></i>
                         </button>
                       }
-                      <span className="badge"><h3>{this.props.globalIndex + 1}/{this.props.questions.length}</h3></span>
+                        <span className="badge"><h3>{this.props.globalIndex + 1}/{this.props.questions.length}</h3></span>
                       {
                         this.props.globalIndex < this.props.questions.length - 1 &&
                         <button type="button"
