@@ -1,4 +1,5 @@
 import React from 'react'
+import { sendResults } from './api' 
 
 class SubmitQuiz extends React.Component {
     state = {
@@ -21,6 +22,7 @@ class SubmitQuiz extends React.Component {
     sendAnswers() {
         //insert here POST request
         console.log(this.state)
+        sendResults(this.state.token, this.state.results)
     }
 
     render() {
