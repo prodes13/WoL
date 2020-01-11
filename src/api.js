@@ -7,6 +7,9 @@ export const call = () =>
 
 export const sendResults = (token, answers) => {
   fetch(link + '/send-results', {
+    headers: {
+      'content-type': 'application/json'
+    },
     method: 'POST',
     body: JSON.stringify(
       {
