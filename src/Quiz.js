@@ -2,7 +2,7 @@ import React from 'react';
 import { call } from './api'
 import SubmitQuiz from './SubmitQuiz'
 
-class ApiCall extends React.Component {
+class Quiz extends React.Component {
   // initial state
   state = {
     error: null,
@@ -111,4 +111,4 @@ class ApiCall extends React.Component {
   }
 }
 
-export default ApiCall;
+export default Quiz;
