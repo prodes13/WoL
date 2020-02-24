@@ -40,7 +40,7 @@ class Quiz extends React.Component {
     const answers = currentQuestion.answers_json
 
     return (
-      <div>
+      <div class="jumbotron bg-light">
         <p key={currentQuestion.id}> {currentQuestion.name} </p>
 
         <nav>
