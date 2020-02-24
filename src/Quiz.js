@@ -47,15 +47,15 @@ class Quiz extends React.Component {
           <ul className="pagination">
 
             {this.state.currentQuestion > 0
-              ? <li className="page-item"><a className="page-link" href="#" onClick={this.goToPrevQuestion}>Previous</a></li>
+              ? <li className="page-item"><button className="page-link" onClick={this.goToPrevQuestion}>Previous</button></li>
               : <div></div>}
 
             {answers.map((answer, id) =>
-              <li className="page-item" key={id}><a className="page-link" href="#" onClick={() => this.saveAnswer(answer)}>{answer}</a></li>
+              <li className="page-item" key={id}><button className="page-link" onClick={() => this.saveAnswer(answer)}>{answer}</button></li>
             )}
 
             {this.state.currentQuestion < questions.length - 1
-              ? <li className="page-item"><a className="page-link" href="#" onClick={this.goToNextQuestion}>Next</a></li>
+              ? <li className="page-item"><button className="page-link" onClick={this.goToNextQuestion}>Next</button></li>
               : <div></div>}
 
           </ul>
