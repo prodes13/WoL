@@ -41,10 +41,10 @@ class Quiz extends React.Component {
 
     return (
       <div className="jumbotron bg-light">
-        <p key={currentQuestion.id}> {currentQuestion.name} </p>
+        <p key={currentQuestion.id} className="text-center"> {currentQuestion.name} </p>
 
         <nav>
-          <ul className="pagination">
+          <ul className="pagination justify-content-center">
 
             {this.state.currentQuestion > 0
               ? <li className="page-item"><button className="page-link" onClick={this.goToPrevQuestion}>Previous</button></li>
