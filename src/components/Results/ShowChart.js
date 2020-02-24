@@ -4,21 +4,20 @@ import Chart from 'chart.js';
 class ShowChart extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {width: window.innerWidth};
-      }
-    componentDidMount() {
-        this.updateCanvas();
+        this.state = { width: window.innerWidth };
     }
+    componentDidMount() { this.updateCanvas(); }
+    
     updateCanvas() {
         let isShown = false;
         // console.log("CHART PROPS", this.props.data);
         (this.state.width > 768) ? isShown = true : isShown = false;
         const ctx = this.refs.canvas.getContext('2d');
-        ctx.fillRect(0,0, 100, 100);
+        ctx.fillRect(0, 0, 100, 100);
         return new Chart(ctx, {
             type: 'polarArea',
             data: {
-                labels:  Object.keys(this.props.data),
+                labels: Object.keys(this.props.data),
                 datasets: [{
                     data: Object.values(this.props.data),
                     backgroundColor: [
@@ -48,20 +47,15 @@ class ShowChart extends React.Component {
                 responsive: true,
                 maintainAspectRatio: true,
                 title: {
-                  display: false
+                    display: false
                 },
                 legend: {
-                  display: isShown
+                    display: isShown
                 }
             }
-        }); 
+        });
     }
-    render() {
-        // width={300} height={300}
-        return (
-            <canvas ref="canvas" />
-        );
-    }
+    render() { return (<canvas ref="canvas" />); } // width={300} height={300}
 }
 
 export default ShowChart;
