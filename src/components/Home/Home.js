@@ -1,6 +1,5 @@
 import React from 'react'
 import { Container, Jumbotron } from 'react-bootstrap'
-import ApiCall from '../ApiCall/ApiCall'
 
 const Home = () => (
 
