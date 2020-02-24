@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Jumbotron, Form, Button } from 'react-bootstrap'
+import { Container, Form, Button } from 'react-bootstrap'
 
 const Registration = () => (
     <Container className="bg-light jumbotron">

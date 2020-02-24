@@ -40,7 +40,7 @@ class Quiz extends React.Component {
     const answers = currentQuestion.answers_json
 
     return (
-      <div class="jumbotron bg-light">
+      <div className="jumbotron bg-light">
         <p key={currentQuestion.id}> {currentQuestion.name} </p>
 
         <nav>
@@ -50,8 +50,8 @@ class Quiz extends React.Component {
               ? <li className="page-item"><a className="page-link" href="#" onClick={this.goToPrevQuestion}>Previous</a></li>
               : <div></div>}
 
-            {answers.map(answer =>
-              <li className="page-item"><a className="page-link" href="#" onClick={() => this.saveAnswer(answer)}>{answer}</a></li>
+            {answers.map((answer, id) =>
+              <li className="page-item" key={id}><a className="page-link" href="#" onClick={() => this.saveAnswer(answer)}>{answer}</a></li>
             )}
 
             {this.state.currentQuestion < questions.length - 1
