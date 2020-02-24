@@ -1,19 +1,10 @@
-import React from 'react';
-import { call } from './api'
-import SubmitQuiz from './SubmitQuiz'
+import React from 'react'; import { call } from './api'; import SubmitQuiz from './SubmitQuiz'
 
 class Quiz extends React.Component {
-  // initial state
-  state = {
-    error: null,
-    isLoaded: false,
-    questions: [],
-    currentQuestion: 0,
-    isDone: false,
-  };
+  state = { error: null, isLoaded: false, questions: [], currentQuestion: 0, isDone: false, }
 
   constructor(props) {
-    super(props);
+    super(props)
 
     this.goToNextQuestion = this.goToNextQuestion.bind(this)
     this.goToPrevQuestion = this.goToPrevQuestion.bind(this)
@@ -21,73 +12,36 @@ class Quiz extends React.Component {
   }
 
   componentDidMount() {
-    // questions are fetched from the server
-    call()
-      // porting questions into state
-      .then(data => {
-        this.setState({
-          isLoaded: true,
-          questions: data
-        },
-        );
-      },
-        // it's important to handle errors here instead of a catch() block
-        // so that we don't swallow exceptions from actual bugs in components
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
+    // fetching questions from the server & porting them into state
+    call().then(data => { this.setState({ isLoaded: true, questions: data }); },
+      // handling errors here instead of catch() block so we don't swallow exceptions from actual bugs
+      (error) => { this.setState({ isLoaded: true, error }); })
   }
 
   goToNextQuestion() {
-    if(this.state.currentQuestion >= this.state.questions.length-1) {
-      this.setState({
-        isDone: true,
-      })  
-    } else {
-      this.setState({
-        currentQuestion: this.state.currentQuestion + 1
-      })  
-    }
+    if (this.state.currentQuestion >= this.state.questions.length - 1) { this.setState({ isDone: true, }) }
+    else { this.setState({ currentQuestion: this.state.currentQuestion + 1 }) }
   }
 
-  goToPrevQuestion() {
-    this.setState({
-      currentQuestion: this.state.currentQuestion - 1
-    })
-  }
+  goToPrevQuestion() { this.setState({ currentQuestion: this.state.currentQuestion - 1 }) }
 
   saveAnswer(value) {
-    const question = this.state.questions[this.state.currentQuestion]
-    question.answer = value
+    const question = this.state.questions[this.state.currentQuestion]; question.answer = value
     this.goToNextQuestion()
   }
 
   render() {
     const { questions, isLoaded, isDone } = this.state;
-    
-    if (isDone) {
-      return (
-        <SubmitQuiz questions={questions} />
-      )
-    }
 
-    if (!isLoaded)
-      return (
-        <div>loading</div>
-      )
+    if (isDone) { return (<SubmitQuiz questions={questions} />) }
+    if (!isLoaded) { return (<div>Loading...</div>) }
 
     const currentQuestion = questions[this.state.currentQuestion]
     const answers = currentQuestion.answers_json
 
     return (
       <div>
-        <p key={currentQuestion.id}>
-          {currentQuestion.name}
-        </p>
+        <p key={currentQuestion.id}> {currentQuestion.name} </p>
 
         <nav>
           <ul className="pagination">
