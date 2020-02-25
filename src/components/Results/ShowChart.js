@@ -10,7 +10,6 @@ class ShowChart extends React.Component {
     
     updateCanvas() {
         let isShown = false;
-        // console.log("CHART PROPS", this.props.data);
         (this.state.width > 768) ? isShown = true : isShown = false;
         const ctx = this.refs.canvas.getContext('2d');
         ctx.fillRect(0, 0, 100, 100);

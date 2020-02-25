@@ -11,15 +11,13 @@ const mapStateToProps = (state) => {
 
 const ShowResults = (props) => {
     const finalQuizResults = {};
-    // console.log("show results", props.results);
+    
     if(props.results){
         const allTopicsWithAnswers = Object.values(props.results);
         const topicsList = []; 
         let reducedTopicsList = [];
 
-        // console.log("allTopicsWithAnswers:", allTopicsWithAnswers);
         allTopicsWithAnswers.map(el => {
-            // console.log(el);
             return topicsList.push(el[1]);
         });
 
@@ -41,8 +39,6 @@ const ShowResults = (props) => {
         Object.keys(finalQuizResults).map((key, index) => (
             finalQuizResults[key] = Math.round(finalQuizResults[key] / numberOfTopics[index])
         ));
-       
-        // console.log("FINAL SUM: ", finalQuizResults);
     }
     return  <div className="container text-center">
                 <h3>Rezultatele tale:</h3>

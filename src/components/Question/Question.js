@@ -1,7 +1,6 @@
 import React from 'react';
 import Answer from './Answer';
 const Question =(props) => {
-    // console.log("Received state in component: ", props.savedQuestions);
     // retrieving question number and answer, numAns is affected by starting index at 0 
     const getAnswered = (numAns) => {
         if (props.savedQuestions) {
