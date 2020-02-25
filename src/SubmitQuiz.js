@@ -1,5 +1,5 @@
 import React from 'react'
-import { sendResults } from './api' 
+import { sendResults } from './api'
 
 class SubmitQuiz extends React.Component {
     state = {
@@ -27,18 +27,16 @@ class SubmitQuiz extends React.Component {
     render() {
         return (
             <div>
-                <div className="alert alert-success">
-                    Multumim pentru timpul acordat
-                    </div>
+                <div className="alert alert-success"> Multumim pentru timpul acordat </div>
+
                 <div>Insert token here:</div>
-                <input value={this.state.token} onChange={(event) => this.setState({
-                    token: event.target.value
-                })} />
-                <br />
-                <button className="btn btn-success" onClick={this.sendAnswers}>Trimite raspunsurile</button>
+
+                <input value={this.state.token} onChange={(event) => this.setState({ token: event.target.value })} />
+
+                <br /> <br />
+
+                <div> <button className="btn btn-success" onClick={this.sendAnswers}>Trimite raspunsurile</button> </div>
             </div>
-
-
         )
     }
 }

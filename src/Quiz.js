@@ -6,9 +6,7 @@ class Quiz extends React.Component {
   constructor(props) {
     super(props)
 
-    this.goToNextQuestion = this.goToNextQuestion.bind(this)
-    this.goToPrevQuestion = this.goToPrevQuestion.bind(this)
-    this.saveAnswer = this.saveAnswer.bind(this)
+    this.goToNextQuestion = this.goToNextQuestion.bind(this); this.goToPrevQuestion = this.goToPrevQuestion.bind(this); this.saveAnswer = this.saveAnswer.bind(this)
   }
 
   componentDidMount() {
