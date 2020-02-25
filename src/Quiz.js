@@ -1,7 +1,7 @@
-import React from 'react'; import { call } from './api'; import SubmitQuiz from './SubmitQuiz'
+import React from 'react'; import { call } from './api'; import SubmitQuiz from './SubmitQuiz'; import { ProgressBar } from 'react-bootstrap'
 
 class Quiz extends React.Component {
-  state = { error: null, isLoaded: false, questions: [], currentQuestion: 0, isDone: false, }
+  state = { error: null, isLoaded: false, questions: [], currentQuestion: 0, isDone: false, animation: false }
 
   constructor(props) {
     super(props)
@@ -12,9 +12,8 @@ class Quiz extends React.Component {
   }
 
   componentDidMount() {
-    // fetching questions from the server & porting them into state
+    // fetching questions from the server & porting them into state.handle errors here instead of catch() block so we don't swallow exceptions from actual bugs
     call().then(data => { this.setState({ isLoaded: true, questions: data }); },
-      // handling errors here instead of catch() block so we don't swallow exceptions from actual bugs
       (error) => { this.setState({ isLoaded: true, error }); })
   }
 
@@ -31,7 +30,8 @@ class Quiz extends React.Component {
   }
 
   render() {
-    const { questions, isLoaded, isDone } = this.state;
+    const { questions, isLoaded, isDone } = this.state
+    let barPercentage = Math.round(this.state.currentQuestion / this.state.questions.length * 100)
 
     if (isDone) { return (<SubmitQuiz questions={questions} />) }
     if (!isLoaded) { return (<div>Loading...</div>) }
@@ -42,6 +42,7 @@ class Quiz extends React.Component {
     return (
       <div className="jumbotron bg-light">
         <p key={currentQuestion.id} className="text-center"> {currentQuestion.name} </p>
+        <ProgressBar className="m-4" now={barPercentage} animated label={`${barPercentage}%`} />
 
         <nav>
           <ul className="pagination justify-content-center">

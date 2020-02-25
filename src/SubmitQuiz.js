@@ -21,7 +21,6 @@ class SubmitQuiz extends React.Component {
 
     sendAnswers() {
         //insert here POST request
-        console.log(this.state)
         sendResults(this.state.token, this.state.results)
     }
 
