@@ -1,13 +1,5 @@
 import React from 'react';
 import ShowChart from './ShowChart';
-import { connect } from 'react-redux';
-
-
-const mapStateToProps = (state) => {
-    return {
-      results: state.saveQuestions.questionsAnswered
-    }
-  }
 
 const ShowResults = (props) => {
     const finalQuizResults = {};
@@ -46,5 +38,4 @@ const ShowResults = (props) => {
             </div>
 }
 
-// action done from mapDispatchToProps will channge state from mapStateToProps
-export default connect(mapStateToProps)(ShowResults)
+export default ShowResults
