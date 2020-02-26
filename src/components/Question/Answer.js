@@ -10,7 +10,6 @@ const Answer = (props) => {
               type="radio" 
               name={`question${props.index}`} 
               value={props.numAns+1} 
-              onChange={props.radioInputHandling} 
               checked = {props.isChecked}
               data-category = {props.category}
               /> 

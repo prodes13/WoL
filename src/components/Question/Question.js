@@ -16,7 +16,6 @@ const Question =(props) => {
                 {Object.values(props.question.answers)
                         .map((el, numAns) => <Answer key = {props.index +''+ numAns} 
                                                     answer={el} 
-                                                    radioInputHandling = {props.radioInputHandling} 
                                                     numAns={numAns} 
                                                     index={props.index}
                                                     isChecked={getAnswered(numAns)}
