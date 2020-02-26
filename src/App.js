@@ -19,27 +19,19 @@ export default function App() {
       <AppNavbar />
       <div className="container">
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/data">
-            <Data />
-          </Route>
-          <Route path="/quiz">
-            <Quiz />
-          </Route>
-          <Route path="/results">
-            <ShowResults />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/registration">
-            <Registration />
-          </Route>
-          <Route path="/profile">
-            <Profile />
-          </Route>
+          <Route exact path="/"> <Home /> </Route>
+
+          <Route exact path="/data"> <Data /> </Route>
+
+          <Route path="/quiz"> <Quiz /> </Route>
+
+          <Route path="/results"> <ShowResults /> </Route>
+
+          <Route path="/login"> <Login /> </Route>
+
+          <Route path="/registration"> <Registration /> </Route>
+
+          <Route path="/profile"> <Profile /> </Route>
         </Switch>
       </div>
     </Router>
