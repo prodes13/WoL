@@ -97,7 +97,7 @@ class App extends Component {
     }
 
     const animationClass = this.state.animation ? 'opacity-0' : ''
-    
+
     return (
       <>
         <div className="container text-center">
@@ -115,10 +115,9 @@ class App extends Component {
           {
             !this.state.isSubmit &&
             <Jumbotron className={`bg-light quiz-box ${show}`}>
-              {/* Loading questions */}
+              {/* Loading questions here */}
               {isPending &&
                 <div className="spinner-border text-center" role="status">
-                  {/* <span className="sr-only">Loading...</span> */}
                   <span>Loading...</span>
                 </div>
               }
@@ -153,7 +152,7 @@ class App extends Component {
                           <i className="fa fa-arrow-left mr-1"></i>
                         </button>
                       }
-                        <span className="badge"><h3>{this.props.globalIndex + 1}/{this.props.questions.length}</h3></span>
+                      <span className="badge"><h3>{this.props.globalIndex + 1}/{this.props.questions.length}</h3></span>
                       {
                         this.props.globalIndex < this.props.questions.length - 1 &&
                         <button type="button"
