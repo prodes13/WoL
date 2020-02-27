@@ -75,7 +75,6 @@ class App extends Component {
 
   startQuiz = () => {
     this.setState({
-      // index: 0,
       start: true
     }, () => this.displayQuestion());
   }
