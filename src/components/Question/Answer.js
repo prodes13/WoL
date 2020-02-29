@@ -11,7 +11,7 @@ const Answer = (props) => {
               name={`question${props.index}`} 
               value={props.numAns+1} 
               checked = {props.isChecked}
-              data-category = {props.category}
+              data-category = {props.topic.name}
               /> 
           {props.answer}
         </label>  
