@@ -1,4 +1,6 @@
-import { call } from '../api';
+// import { call } from '../api';
+import {data} from '../data/db';
+
 import {
   REQUEST_QUESTIONS_PENDING,
   REQUEST_QUESTIONS_SUCCESS,
@@ -11,9 +13,19 @@ import {
 
 export const requestQuestions = () => (dispatch) => {
   dispatch({ type: REQUEST_QUESTIONS_PENDING })
-  call('http://localhost:3300/query')
-    .then(data => dispatch({ type: REQUEST_QUESTIONS_SUCCESS, payload: data[0].questions }))
-    .catch(error => dispatch({ type: REQUEST_QUESTIONS_FAILED, payload: error }))
+  console.log("DATA ", data);
+  dispatch({ type: REQUEST_QUESTIONS_SUCCESS, payload: data.query[0].questions })
+  // fetch('http://wol.taskme.eu/db.json')
+  // // parsing questions in JSON format
+  // .then(response => {
+  //   console.log(response);
+  //   return response.json()
+  // }) 
+  //   .then(data => {
+  //     console.log("data ->", data.query[0]);
+      
+  //     dispatch({ type: REQUEST_QUESTIONS_SUCCESS, payload: data.query[0].questions })})
+  //   .catch(error => dispatch({ type: REQUEST_QUESTIONS_FAILED, payload: error }))
 }
 
 export const saveQuestions = (answeredQuestion) => ({ type: SAVE_QUESTIONS_ANSWERS, payload: answeredQuestion});
