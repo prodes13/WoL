@@ -49,9 +49,9 @@ class App extends Component {
     // start animation
     this.setState({ animation: true })
     // wait for fade out animation to end and change the question
-    setTimeout(() => this.nextQuestion(), 200)
+    setTimeout(() => this.nextQuestion(), 150)
     // hack: remove the animation from the newly created question for a nice fade in effect
-    setTimeout(() => this.setState({ animation: false }), 201)
+    setTimeout(() => this.setState({ animation: false }), 151)
   }
 
   nextQuestion = () => {
@@ -97,7 +97,7 @@ class App extends Component {
     }
 
     const animationClass = this.state.animation ? 'opacity-0' : ''
-    
+
     return (
       <>
         <div className="container text-center">
@@ -153,7 +153,7 @@ class App extends Component {
                           <i className="fa fa-arrow-left mr-1"></i>
                         </button>
                       }
-                        <span className="badge"><h3>{this.props.globalIndex + 1}/{this.props.questions.length}</h3></span>
+                      <span className="badge"><h3>{this.props.globalIndex + 1}/{this.props.questions.length}</h3></span>
                       {
                         this.props.globalIndex < this.props.questions.length - 1 &&
                         <button type="button"

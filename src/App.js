@@ -12,34 +12,20 @@ import ShowResults from "./components/Results/ShowResults";
 import Login from "./components/Login/Login";
 import Registration from './components/Registration/Registration';
 import Profile from './components/Profile/Profile';
-import Data from  './components/ApiCall/ApiCall';
+import Data from './components/ApiCall/ApiCall';
 export default function App() {
   return (
     <Router>
       <AppNavbar />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/data">
-            <Data />
-          </Route>
-          <Route path="/quiz">
-            <Quiz />
-          </Route>
-          <Route path="/results">
-            <ShowResults />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/registration">
-            <Registration />
-          </Route>
-          <Route path="/profile">
-            <Profile />
-          </Route>
-        </Switch>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/data" component={Data} />
+        <Route path="/quiz" component={Quiz} />
+        <Route path="/results" component={ShowResults} />
+        <Route path="/login" component={Login} />
+        <Route path="/registration" component={Registration} />
+        <Route path="/profile" component={Profile} />
+      </Switch>
     </Router>
   );
 }
